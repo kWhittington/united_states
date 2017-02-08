@@ -19,6 +19,13 @@ module UnitedStates
       end
 
       # @return [String]
+      #  the State's name with a leading lower case letter
+      #  and each following word capitalized with no separation.
+      def camel_case
+        "#{pascal_case[0, 1].downcase}#{pascal_case[1..-1]}"
+      end
+
+      # @return [String]
       #  the State's name with a leading capital letter.
       def capitalize
         @string.split.map(&:capitalize).join(' ')
