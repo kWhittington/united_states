@@ -26,6 +26,10 @@ module UnitedStates
 
       # @param string [String]
       #  the abbreviation of the State
+      # @raise [UnitedStates::State::Abbreviation::StringTooLongError]
+      #  if the string is over 2 characters in length
+      # @raise [UnitedStates::State::Abbreviation::StringTooShortError]
+      #  if the string is under 2 characters in length
       # @return [UnitedStates::State::Abbreviation]
       def initialize(string)
         ensure_string_not_too_long(string)

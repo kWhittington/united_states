@@ -27,7 +27,7 @@ RSpec.describe UnitedStates::State::Abbreviation do
     end
 
     context 'when string.length < 2' do
-      let(:string) { Faker::Lorem.characters(1) }
+      let(:string) { Faker::Lorem.character }
 
       it 'raises UnitedStates::State::Abbreviation::StringTooShortError' do
         expect { new }.to raise_error(
