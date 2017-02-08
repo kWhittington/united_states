@@ -1,5 +1,7 @@
 # UnitedStates
 
+[![CircleCI](https://circleci.com/gh/kWhittington/united_states.svg?style=svg)](https://circleci.com/gh/kWhittington/united_states)
+
 The names and abbreviations of each United States of America State.
 
 ## Installation
