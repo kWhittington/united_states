@@ -11,6 +11,13 @@ module UnitedStates
         @string = string
       end
 
+      # @param [UnitedStates::State::Name]
+      # @return [Boolean]
+      #  whether or not other.to_s matches self.to_s
+      def ==(other)
+        other.to_s == to_s
+      end
+
       # @return [String]
       #  the State's name with a leading capital letter.
       def capitalize
