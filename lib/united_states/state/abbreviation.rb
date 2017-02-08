@@ -33,6 +33,12 @@ module UnitedStates
         @string = string
       end
 
+      # @return [String]
+      #  an all uppercase version of this Abbrevation
+      def uppercase
+        @string.upcase
+      end
+
       private
 
       # @param string [String]
