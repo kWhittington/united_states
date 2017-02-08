@@ -34,6 +34,12 @@ module UnitedStates
       end
 
       # @return [String]
+      #  an all lowercase version of this Abbrevation
+      def lowercase
+        @string.downcase
+      end
+
+      # @return [String]
       #  an all uppercase version of this Abbrevation
       def uppercase
         @string.upcase
