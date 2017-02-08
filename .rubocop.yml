@@ -1,0 +1,25 @@
+# Please see the following for configuration options:
+#   https://github.com/bbatsov/rubocop
+#   https://github.com/nevir/rubocop-rspec
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+Documentation:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - spec/**/*_spec.rb
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/support/**/*
+
+Style/MultilineMethodCallBraceLayout:
+  EnforcedStyle: same_line
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
