@@ -36,6 +36,23 @@ RSpec.describe UnitedStates::State::Abbreviation do
     end
   end
 
+  describe '#==(other)' do
+    subject(:equals?) { abbreviation == other }
+
+    context 'when other.to_s == self.to_s' do
+      let(:other) { described_class.new(string) }
+
+      it('is true') { is_expected.to be(true) }
+    end
+
+    context 'when other.to_s != self.to_s' do
+      let(:string) { 'cd' }
+      let(:other) { described_class.new('ab') }
+
+      it('is false') { is_expected.to be(false) }
+    end
+  end
+
   describe '#lowercase' do
     subject(:lowercase) { abbreviation.lowercase }
 

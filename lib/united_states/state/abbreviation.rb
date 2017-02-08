@@ -33,6 +33,13 @@ module UnitedStates
         @string = string
       end
 
+      # @param [UnitedStates::State::Abbreviation]
+      # @return [Boolean]
+      #  whether or not other.to_s matches self.to_s
+      def ==(other)
+        other.to_s == to_s
+      end
+
       # @return [String]
       #  an all lowercase version of this Abbrevation
       def lowercase
