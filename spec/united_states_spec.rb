@@ -14,9 +14,7 @@ RSpec.describe UnitedStates do
   describe '.all' do
     subject(:all) { described_class.all }
 
-    it 'contains 50 designations' do
-      expect(all.count).to eq(50)
-    end
+    it('contains 50 designations') { expect(all.count).to eq(50) }
 
     # rubocop: disable RSpec/ExampleLength
     it 'contains each state designations' do
@@ -123,5 +121,15 @@ RSpec.describe UnitedStates do
           name: 'wyoming', abbreviation: 'wy'))
     end
     # rubocop: enable RSpec/ExampleLength
+
+    describe '.names' do
+      subject(:names) { described_class.names }
+
+      it('contains 50 state names') { expect(names.count).to eq(50) }
+
+      it "contains each state designation's name" do
+        is_expected.to match_array(described_class.all.map(&:name))
+      end
+    end
   end
 end

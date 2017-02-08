@@ -116,5 +116,11 @@ module UnitedStates
   end
   # rubocop: enable Metrics/AbcSize
   # rubocop: enable Metrics/MethodLength
+
+  # @return [Array<UnitedStates::State::Name>]
+  #  a collection of all U.S. State Names.
+  def self.names
+    all.map(&:name)
+  end
 end
 # rubocop: enable Metrics/ModuleLength
