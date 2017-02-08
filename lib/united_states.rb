@@ -6,6 +6,12 @@ require 'united_states/state/designation'
 #
 # Top-level namespace for this gem.
 module UnitedStates
+  # @return [Array<UnitedStates::State::Abbreviation>]
+  #  a collection of all U.S. State Abbreviations.
+  def self.abbreviations
+    all.map(&:abbreviation)
+  end
+
   # rubocop: disable Metrics/AbcSize
   # rubocop: disable Metrics/MethodLength
   # @return [Array<UnitedStates::State::Designation>]

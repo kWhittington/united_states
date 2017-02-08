@@ -11,6 +11,16 @@ RSpec.describe UnitedStates do
     expect(UnitedStates::State::Name).not_to be_nil
   end
 
+  describe '.abbreviations' do
+    subject(:abbreviations) { described_class.abbreviations }
+
+    it('contains 50 designations') { expect(abbreviations.count).to eq(50) }
+
+    it 'contains each state abbreviation' do
+      is_expected.to match_array(described_class.all.map(&:abbreviation))
+    end
+  end
+
   describe '.all' do
     subject(:all) { described_class.all }
 
