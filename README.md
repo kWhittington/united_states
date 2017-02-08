@@ -26,6 +26,11 @@ TODO: Write usage instructions here
 
 After checking out the repo, run `./bin/setup` to install dependencies.
 Then, run `./bin/test` to run code quality checks and tests.
+Then, run './bin/document' to generate `doc/` and open `doc/index.html`
+to view the documentation. See
+http://www.rubydoc.info/gems/yard/file/docs/GettingStarted.md for
+documentation syntax.
+
 You can also run `./bin/console` for an interactive prompt that will allow
 you to experiment.
 
