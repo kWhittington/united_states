@@ -127,6 +127,58 @@ RSpec.describe UnitedStates::State::Name do
     end
   end
 
+  describe '#pascal_case' do
+    subject(:pascal) { name.pascal_case }
+
+    context 'when the initial string is all lowercase' do
+      let(:string) { 'louisiana' }
+
+      it 'is a capitalized version of the name' do
+        is_expected.to eq('Louisiana')
+      end
+    end
+
+    context 'when the initial string is all uppercase' do
+      let(:string) { 'LOUISIANA' }
+
+      it 'is a capitalized version of the name' do
+        is_expected.to eq('Louisiana')
+      end
+    end
+
+    context 'when the initial string has random case' do
+      let(:string) { 'lOuIsianA' }
+
+      it 'is a capitalized version of the name' do
+        is_expected.to eq('Louisiana')
+      end
+    end
+
+    context 'when the initial string is two lowercase words' do
+      let(:string) { 'north dakota' }
+
+      it 'is a capitalized version of each word, with no separators' do
+        is_expected.to eq('NorthDakota')
+      end
+    end
+
+    context 'when the initial string is two uppercase words' do
+      let(:string) { 'NORTH DAKOTA' }
+
+      it 'is a capitalized version of each word, with no separators' do
+        is_expected.to eq('NorthDakota')
+      end
+    end
+
+    context 'when the initial string is two random case words' do
+      let(:string) { 'NoRtH DakoTA' }
+
+      it 'is a capitalized version of each word, with no separators' do
+        is_expected.to eq('NorthDakota')
+      end
+    end
+  end
+
   describe '#screaming_snake_case' do
     subject(:screaming_snake_case) { name.screaming_snake_case }
 

@@ -31,6 +31,13 @@ module UnitedStates
       end
 
       # @return [String]
+      #  the State's name with each word with a leading capital letter
+      #  with no separation.
+      def pascal_case
+        capitalize.tr(' ', '')
+      end
+
+      # @return [String]
       #  the State's name all uppercase and separated by underscores.
       def screaming_snake_case
         snake_case.upcase
