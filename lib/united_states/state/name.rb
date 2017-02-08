@@ -31,7 +31,13 @@ module UnitedStates
       end
 
       # @return [String]
-      #  the State's name all lowercase and separated by spaces.
+      #  the State's name all uppercase and separated by underscores.
+      def screaming_snake_case
+        snake_case.upcase
+      end
+
+      # @return [String]
+      #  the State's name all lowercase and separated by underscores.
       def snake_case
         lowercase.tr(' ', '_')
       end

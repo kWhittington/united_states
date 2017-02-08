@@ -127,6 +127,58 @@ RSpec.describe UnitedStates::State::Name do
     end
   end
 
+  describe '#screaming_snake_case' do
+    subject(:screaming_snake_case) { name.screaming_snake_case }
+
+    context 'when the initial string is one lowercase word' do
+      let(:string) { 'louisiana' }
+
+      it 'is an all uppercase version of the name' do
+        is_expected.to eq('LOUISIANA')
+      end
+    end
+
+    context 'when the initial string is one uppercase word' do
+      let(:string) { 'LOUISIANA' }
+
+      it 'is an all uppercase version of the name' do
+        is_expected.to eq('LOUISIANA')
+      end
+    end
+
+    context 'when the initial string is one random case word' do
+      let(:string) { 'lOuIsianA' }
+
+      it 'is an all uppercase version of the name' do
+        is_expected.to eq('LOUISIANA')
+      end
+    end
+
+    context 'when the initial string is two lowercase words' do
+      let(:string) { 'north dakota' }
+
+      it 'is an all uppercase version of the name, separated by underscores' do
+        is_expected.to eq('NORTH_DAKOTA')
+      end
+    end
+
+    context 'when the initial string is two uppercase words' do
+      let(:string) { 'NORTH DAKOTA' }
+
+      it 'is an all uppercase version of the name, separated by underscores' do
+        is_expected.to eq('NORTH_DAKOTA')
+      end
+    end
+
+    context 'when the initial string is two random case words' do
+      let(:string) { 'NoRtH DakoTA' }
+
+      it 'is an all uppercase version of the name, separated by underscores' do
+        is_expected.to eq('NORTH_DAKOTA')
+      end
+    end
+  end
+
   describe '#snake_case' do
     subject(:snake_case) { name.snake_case }
 
