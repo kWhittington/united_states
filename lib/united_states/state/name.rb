@@ -21,7 +21,7 @@ module UnitedStates
       # @return [String]
       #  the State's name with a leading capital letter.
       def capitalize
-        @string.capitalize
+        @string.split.map(&:capitalize).join(' ')
       end
 
       # @return [String]
@@ -31,9 +31,15 @@ module UnitedStates
       end
 
       # @return [String]
+      #  the State's name all lowercase and separated by spaces.
+      def snake_case
+        lowercase.tr(' ', '_')
+      end
+
+      # @return [String]
       #  the State's name with a leading capital letter.
       def to_s
-        @string.capitalize
+        capitalize
       end
     end
   end

@@ -49,6 +49,30 @@ RSpec.describe UnitedStates::State::Name do
         is_expected.to eq('Louisiana')
       end
     end
+
+    context 'when the initial string is two lowercase words' do
+      let(:string) { 'north dakota' }
+
+      it 'is a capitalized version of the name, separated by spaces' do
+        is_expected.to eq('North Dakota')
+      end
+    end
+
+    context 'when the initial string is two uppercase words' do
+      let(:string) { 'NORTH DAKOTA' }
+
+      it 'is a capitalized version of the name, separated by spaces' do
+        is_expected.to eq('North Dakota')
+      end
+    end
+
+    context 'when the initial string is two random case words' do
+      let(:string) { 'NoRtH DakoTA' }
+
+      it 'is a capitalized version of the name, separated by spaces' do
+        is_expected.to eq('North Dakota')
+      end
+    end
   end
 
   describe '#lowercase' do
@@ -77,6 +101,82 @@ RSpec.describe UnitedStates::State::Name do
         is_expected.to eq('louisiana')
       end
     end
+
+    context 'when the initial string is two lowercase words' do
+      let(:string) { 'north dakota' }
+
+      it 'is a lowercase version of the name, separated by spaces' do
+        is_expected.to eq('north dakota')
+      end
+    end
+
+    context 'when the initial string is two uppercase words' do
+      let(:string) { 'NORTH DAKOTA' }
+
+      it 'is a lowercase version of the name, separated by spaces' do
+        is_expected.to eq('north dakota')
+      end
+    end
+
+    context 'when the initial string is two random case words' do
+      let(:string) { 'NoRtH DakoTA' }
+
+      it 'is a lowercase version of the name, separated by spaces' do
+        is_expected.to eq('north dakota')
+      end
+    end
+  end
+
+  describe '#snake_case' do
+    subject(:snake_case) { name.snake_case }
+
+    context 'when the initial string is one lowercase word' do
+      let(:string) { 'louisiana' }
+
+      it 'is a lowercase version of the name' do
+        is_expected.to eq('louisiana')
+      end
+    end
+
+    context 'when the initial string is one uppercase word' do
+      let(:string) { 'LOUISIANA' }
+
+      it 'is a lowercase version of the name' do
+        is_expected.to eq('louisiana')
+      end
+    end
+
+    context 'when the initial string is one random case word' do
+      let(:string) { 'lOuIsianA' }
+
+      it 'is a lowercase version of the name' do
+        is_expected.to eq('louisiana')
+      end
+    end
+
+    context 'when the initial string is two lowercase words' do
+      let(:string) { 'north dakota' }
+
+      it 'is a lowercase version of the name, separated by underscores' do
+        is_expected.to eq('north_dakota')
+      end
+    end
+
+    context 'when the initial string is two uppercase words' do
+      let(:string) { 'NORTH DAKOTA' }
+
+      it 'is a lowercase version of the name, separated by underscores' do
+        is_expected.to eq('north_dakota')
+      end
+    end
+
+    context 'when the initial string is two random case words' do
+      let(:string) { 'NoRtH DakoTA' }
+
+      it 'is a lowercase version of the name, separated by underscores' do
+        is_expected.to eq('north_dakota')
+      end
+    end
   end
 
   describe '#to_s' do
@@ -103,6 +203,30 @@ RSpec.describe UnitedStates::State::Name do
 
       it 'is a capitalized version of the name' do
         is_expected.to eq('Louisiana')
+      end
+    end
+
+    context 'when the initial string is two lowercase words' do
+      let(:string) { 'north dakota' }
+
+      it 'is a capitalized version of the name, separated by underscores' do
+        is_expected.to eq('North Dakota')
+      end
+    end
+
+    context 'when the initial string is two uppercase words' do
+      let(:string) { 'NORTH DAKOTA' }
+
+      it 'is a capitalized version of the name, separated by underscores' do
+        is_expected.to eq('North Dakota')
+      end
+    end
+
+    context 'when the initial string is two random case words' do
+      let(:string) { 'NoRtH DakoTA' }
+
+      it 'is a capitalized version of the name, separated by underscores' do
+        is_expected.to eq('North Dakota')
       end
     end
   end
