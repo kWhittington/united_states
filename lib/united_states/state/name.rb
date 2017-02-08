@@ -18,6 +18,12 @@ module UnitedStates
       end
 
       # @return [String]
+      #  the State's name in all lowercase letters.
+      def lowercase
+        @string.downcase
+      end
+
+      # @return [String]
       #  the State's name with a leading capital letter.
       def to_s
         @string.capitalize

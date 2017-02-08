@@ -35,6 +35,34 @@ RSpec.describe UnitedStates::State::Name do
     end
   end
 
+  describe '#lowercase' do
+    subject(:lowercase) { name.lowercase }
+
+    context 'when the initial string is all lowercase' do
+      let(:string) { 'louisiana' }
+
+      it 'is a lowercase version of the name' do
+        is_expected.to eq('louisiana')
+      end
+    end
+
+    context 'when the initial string is all uppercase' do
+      let(:string) { 'LOUISIANA' }
+
+      it 'is a lowercase version of the name' do
+        is_expected.to eq('louisiana')
+      end
+    end
+
+    context 'when the initial string has random case' do
+      let(:string) { 'lOuIsianA' }
+
+      it 'is a lowercase version of the name' do
+        is_expected.to eq('louisiana')
+      end
+    end
+  end
+
   describe '#to_s' do
     subject(:to_s) { name.to_s }
 
