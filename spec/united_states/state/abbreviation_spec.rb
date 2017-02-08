@@ -64,6 +64,34 @@ RSpec.describe UnitedStates::State::Abbreviation do
     end
   end
 
+  describe '#to_s' do
+    subject(:to_s) { abbreviation.to_s }
+
+    context 'when the initial string is all lowercase' do
+      let(:string) { 'la' }
+
+      it 'is an uppercase version' do
+        is_expected.to eq('LA')
+      end
+    end
+
+    context 'when the initial string is all uppercase' do
+      let(:string) { 'LA' }
+
+      it 'is an uppercase version' do
+        is_expected.to eq('LA')
+      end
+    end
+
+    context 'when the inital string is mixed case' do
+      let(:string) { 'lA' }
+
+      it 'is an uppercase version' do
+        is_expected.to eq('LA')
+      end
+    end
+  end
+
   describe '#uppercase' do
     subject(:uppercase) { abbreviation.uppercase }
 

@@ -45,6 +45,12 @@ module UnitedStates
         @string.upcase
       end
 
+      # @return [String]
+      #  an all uppercase version of this Abbreviation
+      def to_s
+        uppercase
+      end
+
       private
 
       # @param string [String]
