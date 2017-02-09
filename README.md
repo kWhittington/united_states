@@ -22,7 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'united_states'
+
+UnitedStates.all
+# => [#<UnitedStates::State::Designation...@string="WY">]
+UnitedStates.names
+#=> [#<UnitedStates::State::Name...@string="Wyoming">]
+UnitedStates.abbreviations
+#=> [#<UnitedStates::State::Abbreviation...@string="WY"]
+```
 
 ## Development
 
