@@ -177,6 +177,52 @@ RSpec.describe UnitedStates do
     end
   end
 
+  describe '.find_by_postal_code(postal_code)' do
+    subject :find_by_postal_code do
+      described_class.find_by_postal_code(postal_code)
+    end
+
+    context 'when searching with a lowercase postal code' do
+      let(:postal_code) { 'ms' }
+
+      it 'is a Designation with matching #postal_code, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'MISSISSIPPI', postal_code: 'MS'))
+      end
+    end
+
+    context 'when searching with an uppercase state postal code' do
+      let(:postal_code) { 'TN' }
+
+      it 'is a Designation with matching #postal_code, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'tennessee', postal_code: 'tn'))
+      end
+    end
+
+    context 'when searching with a mixed case state postal code' do
+      let(:postal_code) { 'tX' }
+
+      it 'is a Designation with matching #postal_code, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'TexAs', postal_code: 'tx'))
+      end
+    end
+
+    context 'when searching with a non-state postal code' do
+      let(:postal_code) { 'ZZ' }
+
+      it 'raises a UnitedStates::NoDesignationFoundError' do
+        expect { find_by_postal_code }.to raise_error(
+          UnitedStates::NoDesignationFoundError,
+          'No State with postal code, "ZZ," was found.')
+      end
+    end
+  end
+
   describe '.names' do
     subject(:names) { described_class.names }
 
