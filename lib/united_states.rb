@@ -16,12 +16,6 @@ module UnitedStates
     end
   end
 
-  # @return [Array<UnitedStates::State::PostalCode>]
-  #  a collection of all U.S. State postal codes.
-  def self.postal_codes
-    all.map(&:postal_code)
-  end
-
   # rubocop: disable Metrics/AbcSize
   # rubocop: disable Metrics/MethodLength
   # @return [Array<UnitedStates::State::Designation>]
@@ -166,6 +160,12 @@ module UnitedStates
   #  a collection of all U.S. State Names.
   def self.names
     all.map(&:name)
+  end
+
+  # @return [Array<UnitedStates::State::PostalCode>]
+  #  a collection of all U.S. State postal codes.
+  def self.postal_codes
+    all.map(&:postal_code)
   end
 end
 # rubocop: enable Metrics/ModuleLength

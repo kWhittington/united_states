@@ -11,16 +11,6 @@ RSpec.describe UnitedStates do
     expect(UnitedStates::State::Name).not_to be_nil
   end
 
-  describe '.postal_codes' do
-    subject(:postal_codes) { described_class.postal_codes }
-
-    it('contains 50 designations') { expect(postal_codes.count).to eq(50) }
-
-    it 'contains each state postal code' do
-      is_expected.to match_array(described_class.all.map(&:postal_code))
-    end
-  end
-
   describe '.all' do
     subject(:all) { described_class.all }
 
@@ -230,6 +220,16 @@ RSpec.describe UnitedStates do
 
     it "contains each state designation's name" do
       is_expected.to match_array(described_class.all.map(&:name))
+    end
+  end
+
+  describe '.postal_codes' do
+    subject(:postal_codes) { described_class.postal_codes }
+
+    it('contains 50 designations') { expect(postal_codes.count).to eq(50) }
+
+    it 'contains each state postal code' do
+      is_expected.to match_array(described_class.all.map(&:postal_code))
     end
   end
 end
