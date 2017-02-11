@@ -162,7 +162,47 @@ RSpec.describe UnitedStates do
       it 'raises a UnitedStates::NoDesignationFoundError' do
         expect { find_by_name }.to raise_error(
           UnitedStates::NoDesignationFoundError,
-          'No State named "Kevin" was found.')
+          'No State named, "Kevin," was found.')
+      end
+    end
+
+    context 'when searching with a symbolized, lowercase state name' do
+      let(:name) { :mississippi }
+
+      it 'is a Designation with matching #name, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'MISSISSIPPI', postal_code: 'MS'))
+      end
+    end
+
+    context 'when searching with a symbolized, uppercase state name' do
+      let(:name) { :TENNESSEE }
+
+      it 'is a Designation with matching #name, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'tennessee', postal_code: 'tn'))
+      end
+    end
+
+    context 'when searching with a symbolized, mixed case state name' do
+      let(:name) { :tExAs }
+
+      it 'is a Designation with matching #name, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'TexAs', postal_code: 'tx'))
+      end
+    end
+
+    context 'when searching with a symbolized, non-state name' do
+      let(:name) { :kevin }
+
+      it 'raises a UnitedStates::NoDesignationFoundError' do
+        expect { find_by_name }.to raise_error(
+          UnitedStates::NoDesignationFoundError,
+          'No State named, "Kevin," was found.')
       end
     end
   end
@@ -204,6 +244,46 @@ RSpec.describe UnitedStates do
 
     context 'when searching with a non-state postal code' do
       let(:postal_code) { 'ZZ' }
+
+      it 'raises a UnitedStates::NoDesignationFoundError' do
+        expect { find_by_postal_code }.to raise_error(
+          UnitedStates::NoDesignationFoundError,
+          'No State with postal code, "ZZ," was found.')
+      end
+    end
+
+    context 'when searching with a symbolized, lowercase postal code' do
+      let(:postal_code) { :ms }
+
+      it 'is a Designation with matching #postal_code, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'MISSISSIPPI', postal_code: 'MS'))
+      end
+    end
+
+    context 'when searching with a symbolized, uppercase state postal code' do
+      let(:postal_code) { :TN }
+
+      it 'is a Designation with matching #postal_code, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'tennessee', postal_code: 'tn'))
+      end
+    end
+
+    context 'when searching with a symbolized, mixed case state postal code' do
+      let(:postal_code) { :tX }
+
+      it 'is a Designation with matching #postal_code, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'TexAs', postal_code: 'tx'))
+      end
+    end
+
+    context 'when searching with a symbolized, non-state postal code' do
+      let(:postal_code) { :ZZ }
 
       it 'raises a UnitedStates::NoDesignationFoundError' do
         expect { find_by_postal_code }.to raise_error(

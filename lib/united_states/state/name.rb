@@ -8,7 +8,7 @@ module UnitedStates
       #  the name of the State
       # @return [UnitedStates::State::Name]
       def initialize(string)
-        @string = string
+        @string = string.to_s
       end
 
       # @param [UnitedStates::State::Name]

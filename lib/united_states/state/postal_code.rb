@@ -32,6 +32,7 @@ module UnitedStates
       #  if the string is under 2 characters in length
       # @return [UnitedStates::State::PostalCode]
       def initialize(string)
+        string = string.to_s
         ensure_string_not_too_long(string)
         ensure_string_not_too_short(string)
         @string = string

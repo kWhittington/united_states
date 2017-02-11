@@ -138,7 +138,7 @@ module UnitedStates
   def self.find_by_name(name)
     name = UnitedStates::State::Name.new(name)
     all.find { |designation| designation.name == name } || raise(
-      NoDesignationFoundError, "No State named \"#{name}\" was found.")
+      NoDesignationFoundError, "No State named, \"#{name},\" was found.")
   end
 
   # @param postal_code [String]
