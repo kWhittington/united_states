@@ -16,6 +16,22 @@ module UnitedStates
     end
   end
 
+  # @example
+  #  UnitedStates['louisiana'] # => UnitedSt...Designation
+  #  UnitedStates[:Ms] # => UnitedSt...Designation
+  #  UnitedStates[:marx] # => NoDesignationFoundError
+  # @param name_or_postal_code [String]
+  # @return [UnitedStates::State::Desgination]
+  #  the State Desgination matching the provided name or postal code.
+  # @raise [NoDesignationFoundError]
+  #  if no state Designation exists with the given name or postal code
+  def self.[](name_or_postal_code)
+    name_or_postal_code = name_or_postal_code.to_s
+    invalid_postal_code = name_or_postal_code.length != 2
+    return find_by_name(name_or_postal_code) if invalid_postal_code
+    find_by_postal_code(name_or_postal_code)
+  end
+
   # rubocop: disable Metrics/AbcSize
   # rubocop: disable Metrics/MethodLength
   # @return [Array<UnitedStates::State::Designation>]

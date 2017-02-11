@@ -31,6 +31,12 @@ UnitedStates.names
 #=> [#<UnitedStates::State::Name...@string="Wyoming">]
 UnitedStates.postal_codes
 #=> [#<UnitedStates::State::PostalCode...@string="WY"]
+UnitedStates[:LA]
+# => [#<UnitedStates::State::Designation...@string="LA">]
+UnitedStates['mississippi']
+# => [#<UnitedStates::State::Designation...@string="MS">]
+UnitedStates['car']
+# => UnitedStates::NoDesignationFoundError
 ```
 
 ## Development
