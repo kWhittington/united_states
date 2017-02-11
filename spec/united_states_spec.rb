@@ -130,16 +130,60 @@ RSpec.describe UnitedStates do
         UnitedStates::State::Designation.new(
           name: 'wyoming', abbreviation: 'wy'))
     end
-    # rubocop: enable RSpec/ExampleLength
+  end
+  # rubocop: enable RSpec/ExampleLength
 
-    describe '.names' do
-      subject(:names) { described_class.names }
+  describe '.find_by_name(name)' do
+    subject(:find_by_name) { described_class.find_by_name(name) }
 
-      it('contains 50 state names') { expect(names.count).to eq(50) }
+    context 'when searching with a lowercase state name' do
+      let(:name) { 'mississippi' }
 
-      it "contains each state designation's name" do
-        is_expected.to match_array(described_class.all.map(&:name))
+      it 'is a Designation with matching #name, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'MISSISSIPPI', abbreviation: 'MS'))
       end
+    end
+
+    context 'when searching with an uppercase state name' do
+      let(:name) { 'TENNESSEE' }
+
+      it 'is a Designation with matching #name, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'tennessee', abbreviation: 'tn'))
+      end
+    end
+
+    context 'when searching with a mixed case state name' do
+      let(:name) { 'tExAs' }
+
+      it 'is a Designation with matching #name, ignoring case' do
+        is_expected.to eq(
+          UnitedStates::State::Designation.new(
+            name: 'TexAs', abbreviation: 'tx'))
+      end
+    end
+
+    context 'when searching with a non-state name' do
+      let(:name) { 'kevin' }
+
+      it 'raises a UnitedStates::NoDesignationFoundError' do
+        expect { find_by_name }.to raise_error(
+          UnitedStates::NoDesignationFoundError,
+          'No State named "Kevin" was found.')
+      end
+    end
+  end
+
+  describe '.names' do
+    subject(:names) { described_class.names }
+
+    it('contains 50 state names') { expect(names.count).to eq(50) }
+
+    it "contains each state designation's name" do
+      is_expected.to match_array(described_class.all.map(&:name))
     end
   end
 end

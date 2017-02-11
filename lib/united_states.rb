@@ -6,6 +6,16 @@ require 'united_states/state/designation'
 #
 # Top-level namespace for this gem.
 module UnitedStates
+  # Thrown when someone attempts to search for a state with
+  # the wrong name or abbreviation.
+  class NoDesignationFoundError < StandardError
+    DEFAULT_MESSAGE = 'No State with that name was found.'
+
+    def initialize(message = DEFAULT_MESSAGE)
+      super(message)
+    end
+  end
+
   # @return [Array<UnitedStates::State::Abbreviation>]
   #  a collection of all U.S. State Abbreviations.
   def self.abbreviations
@@ -122,6 +132,20 @@ module UnitedStates
   end
   # rubocop: enable Metrics/AbcSize
   # rubocop: enable Metrics/MethodLength
+
+  # @param name [String]
+  # @raise [NoDesignationFoundError]
+  #  if no state Designation exists with the given name
+  # @return [UnitedStates::State::Desgination]
+  #  the State Desgination matching the provided name/abbreviation.
+  # @example
+  #  UnitedStates.find_by_name('louisiana') # => UnitedSt...Designation
+  #  UnitedStates.find_by_name('marx') # => NoDesignationFoundError
+  def self.find_by_name(name)
+    name = UnitedStates::State::Name.new(name)
+    all.find { |designation| designation.name == name } || raise(
+      NoDesignationFoundError, "No State named \"#{name}\" was found.")
+  end
 
   # @return [Array<UnitedStates::State::Name>]
   #  a collection of all U.S. State Names.

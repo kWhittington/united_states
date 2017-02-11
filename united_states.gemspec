@@ -4,7 +4,6 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'united_states/version'
 
-# rubocop: disable Metrics/BlockLength
 Gem::Specification.new do |spec|
   spec.name = 'united_states'
   spec.version = UnitedStates::VERSION
@@ -34,4 +33,3 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'yard'
 end
-# rubocop: enable Metrics/BlockLength
