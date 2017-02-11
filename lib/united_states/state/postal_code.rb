@@ -26,11 +26,11 @@ module UnitedStates
 
       # @param string [String]
       #  the postal code of the State
+      # @return [UnitedStates::State::PostalCode]
       # @raise [UnitedStates::State::PostalCode::StringTooLongError]
       #  if the string is over 2 characters in length
       # @raise [UnitedStates::State::PostalCode::StringTooShortError]
       #  if the string is under 2 characters in length
-      # @return [UnitedStates::State::PostalCode]
       def initialize(string)
         string = string.to_s
         ensure_string_not_too_long(string)
@@ -66,10 +66,10 @@ module UnitedStates
       private
 
       # @param string [String]
-      # @raise [UnitedStates::State::PostalCode::StringTooLongError]
-      #  if the string is over 2 characters in length
       # @return [true]
       #  if the string is under 2 characters in length
+      # @raise [UnitedStates::State::PostalCode::StringTooLongError]
+      #  if the string is over 2 characters in length
       def ensure_string_not_too_long(string)
         return true if string.length <= 2
         raise StringTooLongError,
@@ -77,10 +77,10 @@ module UnitedStates
       end
 
       # @param string [String]
-      # @raise [UnitedStates::State::PostalCode::StringTooShortError]
-      #  if the string is under 2 characters in length
       # @return [true]
       #  if the string is 2 characters or more in length
+      # @raise [UnitedStates::State::PostalCode::StringTooShortError]
+      #  if the string is under 2 characters in length
       def ensure_string_not_too_short(string)
         return true if string.length >= 2
         raise StringTooShortError,

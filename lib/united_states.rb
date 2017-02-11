@@ -127,28 +127,28 @@ module UnitedStates
   # rubocop: enable Metrics/AbcSize
   # rubocop: enable Metrics/MethodLength
 
-  # @param name [String]
-  # @raise [NoDesignationFoundError]
-  #  if no state Designation exists with the given name
-  # @return [UnitedStates::State::Desgination]
-  #  the State Desgination matching the provided name.
   # @example
   #  UnitedStates.find_by_name('louisiana') # => UnitedSt...Designation
   #  UnitedStates.find_by_name('marx') # => NoDesignationFoundError
+  # @param name [String]
+  # @return [UnitedStates::State::Desgination]
+  #  the State Desgination matching the provided name.
+  # @raise [NoDesignationFoundError]
+  #  if no state Designation exists with the given name
   def self.find_by_name(name)
     name = UnitedStates::State::Name.new(name)
     all.find { |designation| designation.name == name } || raise(
       NoDesignationFoundError, "No State named, \"#{name},\" was found.")
   end
 
-  # @param postal_code [String]
-  # @raise [NoDesignationFoundError]
-  #  if no state Designation exists with the given postal code
-  # @return [UnitedStates::State::Designation]
-  #  the state Designation matching the provided postal code.
   # @example
   #  UnitedStates.find_by_postal_code('la') # => UnitedSt...Designation
   #  UnitedStates.find_by_postal_code('xx') # => NoDesignationFoundError
+  # @param postal_code [String]
+  # @return [UnitedStates::State::Designation]
+  #  the state Designation matching the provided postal code.
+  # @raise [NoDesignationFoundError]
+  #  if no state Designation exists with the given postal code
   def self.find_by_postal_code(postal_code)
     postal_code = UnitedStates::State::PostalCode.new(postal_code)
     all.find { |designation| designation.postal_code == postal_code } || raise(
