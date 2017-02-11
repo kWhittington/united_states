@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 require 'spec_helper'
-require 'united_states/state/abbreviation'
+require 'united_states/state/postal_code'
 
-RSpec.describe UnitedStates::State::Abbreviation do
-  subject(:abbreviation) { described_class.new(string) }
+RSpec.describe UnitedStates::State::PostalCode do
+  subject(:postal_code) { described_class.new(string) }
   let(:string) { Faker::Lorem.characters(2) }
 
   describe '.new(string)' do
@@ -12,16 +12,16 @@ RSpec.describe UnitedStates::State::Abbreviation do
     context 'when string.length > 2' do
       let(:string) { Faker::Lorem.characters(4) }
 
-      it 'raises UnitedStates::State::Abbreviation::StringTooLongError' do
+      it 'raises UnitedStates::State::PostalCode::StringTooLongError' do
         expect { new }.to raise_error(
-          UnitedStates::State::Abbreviation::StringTooLongError)
+          UnitedStates::State::PostalCode::StringTooLongError)
       end
     end
 
     context 'when string.length == 2' do
       let(:string) { Faker::Lorem.characters(2) }
 
-      it 'is a new Abbreviation instance' do
+      it 'is a new PostalCode instance' do
         is_expected.to be_an(described_class)
       end
     end
@@ -29,15 +29,15 @@ RSpec.describe UnitedStates::State::Abbreviation do
     context 'when string.length < 2' do
       let(:string) { Faker::Lorem.character }
 
-      it 'raises UnitedStates::State::Abbreviation::StringTooShortError' do
+      it 'raises UnitedStates::State::PostalCode::StringTooShortError' do
         expect { new }.to raise_error(
-          UnitedStates::State::Abbreviation::StringTooShortError)
+          UnitedStates::State::PostalCode::StringTooShortError)
       end
     end
   end
 
   describe '#==(other)' do
-    subject(:equals?) { abbreviation == other }
+    subject(:equals?) { postal_code == other }
 
     context 'when other.to_s == self.to_s' do
       let(:other) { described_class.new(string) }
@@ -54,7 +54,7 @@ RSpec.describe UnitedStates::State::Abbreviation do
   end
 
   describe '#lowercase' do
-    subject(:lowercase) { abbreviation.lowercase }
+    subject(:lowercase) { postal_code.lowercase }
 
     context 'when the initial string is all lowercase' do
       let(:string) { 'la' }
@@ -82,7 +82,7 @@ RSpec.describe UnitedStates::State::Abbreviation do
   end
 
   describe '#to_s' do
-    subject(:to_s) { abbreviation.to_s }
+    subject(:to_s) { postal_code.to_s }
 
     context 'when the initial string is all lowercase' do
       let(:string) { 'la' }
@@ -110,7 +110,7 @@ RSpec.describe UnitedStates::State::Abbreviation do
   end
 
   describe '#uppercase' do
-    subject(:uppercase) { abbreviation.uppercase }
+    subject(:uppercase) { postal_code.uppercase }
 
     context 'when the initial string is all lowercase' do
       let(:string) { 'la' }

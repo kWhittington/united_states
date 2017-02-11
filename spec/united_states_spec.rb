@@ -11,13 +11,13 @@ RSpec.describe UnitedStates do
     expect(UnitedStates::State::Name).not_to be_nil
   end
 
-  describe '.abbreviations' do
-    subject(:abbreviations) { described_class.abbreviations }
+  describe '.postal_codes' do
+    subject(:postal_codes) { described_class.postal_codes }
 
-    it('contains 50 designations') { expect(abbreviations.count).to eq(50) }
+    it('contains 50 designations') { expect(postal_codes.count).to eq(50) }
 
-    it 'contains each state abbreviation' do
-      is_expected.to match_array(described_class.all.map(&:abbreviation))
+    it 'contains each state postal code' do
+      is_expected.to match_array(described_class.all.map(&:postal_code))
     end
   end
 
@@ -30,105 +30,105 @@ RSpec.describe UnitedStates do
     it 'contains each state designations' do
       is_expected.to contain_exactly(
         UnitedStates::State::Designation.new(
-          name: 'alabama', abbreviation: 'al'),
+          name: 'alabama', postal_code: 'al'),
         UnitedStates::State::Designation.new(
-          name: 'alaska', abbreviation: 'ak'),
+          name: 'alaska', postal_code: 'ak'),
         UnitedStates::State::Designation.new(
-          name: 'arizona', abbreviation: 'az'),
+          name: 'arizona', postal_code: 'az'),
         UnitedStates::State::Designation.new(
-          name: 'arkansas', abbreviation: 'ar'),
+          name: 'arkansas', postal_code: 'ar'),
         UnitedStates::State::Designation.new(
-          name: 'california', abbreviation: 'ca'),
+          name: 'california', postal_code: 'ca'),
         UnitedStates::State::Designation.new(
-          name: 'colorado', abbreviation: 'co'),
+          name: 'colorado', postal_code: 'co'),
         UnitedStates::State::Designation.new(
-          name: 'connecticut', abbreviation: 'ct'),
+          name: 'connecticut', postal_code: 'ct'),
         UnitedStates::State::Designation.new(
-          name: 'delaware', abbreviation: 'de'),
+          name: 'delaware', postal_code: 'de'),
         UnitedStates::State::Designation.new(
-          name: 'florida', abbreviation: 'fl'),
+          name: 'florida', postal_code: 'fl'),
         UnitedStates::State::Designation.new(
-          name: 'georgia', abbreviation: 'ga'),
+          name: 'georgia', postal_code: 'ga'),
         UnitedStates::State::Designation.new(
-          name: 'hawaii', abbreviation: 'hi'),
+          name: 'hawaii', postal_code: 'hi'),
         UnitedStates::State::Designation.new(
-          name: 'idaho', abbreviation: 'id'),
+          name: 'idaho', postal_code: 'id'),
         UnitedStates::State::Designation.new(
-          name: 'illinois', abbreviation: 'il'),
+          name: 'illinois', postal_code: 'il'),
         UnitedStates::State::Designation.new(
-          name: 'indiana', abbreviation: 'in'),
+          name: 'indiana', postal_code: 'in'),
         UnitedStates::State::Designation.new(
-          name: 'iowa', abbreviation: 'ia'),
+          name: 'iowa', postal_code: 'ia'),
         UnitedStates::State::Designation.new(
-          name: 'kansas', abbreviation: 'ks'),
+          name: 'kansas', postal_code: 'ks'),
         UnitedStates::State::Designation.new(
-          name: 'kentucky', abbreviation: 'ky'),
+          name: 'kentucky', postal_code: 'ky'),
         UnitedStates::State::Designation.new(
-          name: 'louisiana', abbreviation: 'la'),
+          name: 'louisiana', postal_code: 'la'),
         UnitedStates::State::Designation.new(
-          name: 'maine', abbreviation: 'me'),
+          name: 'maine', postal_code: 'me'),
         UnitedStates::State::Designation.new(
-          name: 'maryland', abbreviation: 'md'),
+          name: 'maryland', postal_code: 'md'),
         UnitedStates::State::Designation.new(
-          name: 'massachusetts', abbreviation: 'ma'),
+          name: 'massachusetts', postal_code: 'ma'),
         UnitedStates::State::Designation.new(
-          name: 'michigan', abbreviation: 'mi'),
+          name: 'michigan', postal_code: 'mi'),
         UnitedStates::State::Designation.new(
-          name: 'minnesota', abbreviation: 'mn'),
+          name: 'minnesota', postal_code: 'mn'),
         UnitedStates::State::Designation.new(
-          name: 'mississippi', abbreviation: 'ms'),
+          name: 'mississippi', postal_code: 'ms'),
         UnitedStates::State::Designation.new(
-          name: 'missouri', abbreviation: 'mo'),
+          name: 'missouri', postal_code: 'mo'),
         UnitedStates::State::Designation.new(
-          name: 'montana', abbreviation: 'mt'),
+          name: 'montana', postal_code: 'mt'),
         UnitedStates::State::Designation.new(
-          name: 'nebraska', abbreviation: 'ne'),
+          name: 'nebraska', postal_code: 'ne'),
         UnitedStates::State::Designation.new(
-          name: 'nevada', abbreviation: 'nv'),
+          name: 'nevada', postal_code: 'nv'),
         UnitedStates::State::Designation.new(
-          name: 'new hampshire', abbreviation: 'nh'),
+          name: 'new hampshire', postal_code: 'nh'),
         UnitedStates::State::Designation.new(
-          name: 'new jersey', abbreviation: 'nj'),
+          name: 'new jersey', postal_code: 'nj'),
         UnitedStates::State::Designation.new(
-          name: 'new mexico', abbreviation: 'nm'),
+          name: 'new mexico', postal_code: 'nm'),
         UnitedStates::State::Designation.new(
-          name: 'new york', abbreviation: 'ny'),
+          name: 'new york', postal_code: 'ny'),
         UnitedStates::State::Designation.new(
-          name: 'north carolina', abbreviation: 'nc'),
+          name: 'north carolina', postal_code: 'nc'),
         UnitedStates::State::Designation.new(
-          name: 'north dakota', abbreviation: 'nd'),
+          name: 'north dakota', postal_code: 'nd'),
         UnitedStates::State::Designation.new(
-          name: 'ohio', abbreviation: 'oh'),
+          name: 'ohio', postal_code: 'oh'),
         UnitedStates::State::Designation.new(
-          name: 'oklahoma', abbreviation: 'ok'),
+          name: 'oklahoma', postal_code: 'ok'),
         UnitedStates::State::Designation.new(
-          name: 'oregon', abbreviation: 'or'),
+          name: 'oregon', postal_code: 'or'),
         UnitedStates::State::Designation.new(
-          name: 'pennsylvania', abbreviation: 'pa'),
+          name: 'pennsylvania', postal_code: 'pa'),
         UnitedStates::State::Designation.new(
-          name: 'rhode island', abbreviation: 'ri'),
+          name: 'rhode island', postal_code: 'ri'),
         UnitedStates::State::Designation.new(
-          name: 'south carolina', abbreviation: 'sc'),
+          name: 'south carolina', postal_code: 'sc'),
         UnitedStates::State::Designation.new(
-          name: 'south dakota', abbreviation: 'sd'),
+          name: 'south dakota', postal_code: 'sd'),
         UnitedStates::State::Designation.new(
-          name: 'tennessee', abbreviation: 'tn'),
+          name: 'tennessee', postal_code: 'tn'),
         UnitedStates::State::Designation.new(
-          name: 'texas', abbreviation: 'tx'),
+          name: 'texas', postal_code: 'tx'),
         UnitedStates::State::Designation.new(
-          name: 'utah', abbreviation: 'ut'),
+          name: 'utah', postal_code: 'ut'),
         UnitedStates::State::Designation.new(
-          name: 'vermont', abbreviation: 'vt'),
+          name: 'vermont', postal_code: 'vt'),
         UnitedStates::State::Designation.new(
-          name: 'virginia', abbreviation: 'va'),
+          name: 'virginia', postal_code: 'va'),
         UnitedStates::State::Designation.new(
-          name: 'washington', abbreviation: 'wa'),
+          name: 'washington', postal_code: 'wa'),
         UnitedStates::State::Designation.new(
-          name: 'west virginia', abbreviation: 'wv'),
+          name: 'west virginia', postal_code: 'wv'),
         UnitedStates::State::Designation.new(
-          name: 'wisconsin', abbreviation: 'wi'),
+          name: 'wisconsin', postal_code: 'wi'),
         UnitedStates::State::Designation.new(
-          name: 'wyoming', abbreviation: 'wy'))
+          name: 'wyoming', postal_code: 'wy'))
     end
   end
   # rubocop: enable RSpec/ExampleLength
@@ -142,7 +142,7 @@ RSpec.describe UnitedStates do
       it 'is a Designation with matching #name, ignoring case' do
         is_expected.to eq(
           UnitedStates::State::Designation.new(
-            name: 'MISSISSIPPI', abbreviation: 'MS'))
+            name: 'MISSISSIPPI', postal_code: 'MS'))
       end
     end
 
@@ -152,7 +152,7 @@ RSpec.describe UnitedStates do
       it 'is a Designation with matching #name, ignoring case' do
         is_expected.to eq(
           UnitedStates::State::Designation.new(
-            name: 'tennessee', abbreviation: 'tn'))
+            name: 'tennessee', postal_code: 'tn'))
       end
     end
 
@@ -162,7 +162,7 @@ RSpec.describe UnitedStates do
       it 'is a Designation with matching #name, ignoring case' do
         is_expected.to eq(
           UnitedStates::State::Designation.new(
-            name: 'TexAs', abbreviation: 'tx'))
+            name: 'TexAs', postal_code: 'tx'))
       end
     end
 

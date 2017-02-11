@@ -2,22 +2,22 @@
 
 module UnitedStates
   module State
-    # A U.S. State abbreviation.
-    class Abbreviation
-      # Thrown when someone attempts to make an Abbreviation instance
+    # A U.S. State postal code.
+    class PostalCode
+      # Thrown when someone attempts to make a PostalCode instance
       # from a string longer than 2 characters.
       class StringTooLongError < StandardError
-        DEFAULT_MESSAGE = 'string too long, abbreviations must be 2 characters'
+        DEFAULT_MESSAGE = 'string too long, postal code must be 2 characters'
 
         def initialize(message = DEFAULT_MESSAGE)
           super(message)
         end
       end
 
-      # Thrown when someone attempts to make an Abbreviation instance
+      # Thrown when someone attempts to make a PostalCode instance
       # from a string shorter than 2 characters.
       class StringTooShortError < StandardError
-        DEFAULT_MESSAGE = 'string too short, abbreviations must be 2 characters'
+        DEFAULT_MESSAGE = 'string too short, postal codes must be 2 characters'
 
         def initialize(message = DEFAULT_MESSAGE)
           super(message)
@@ -25,19 +25,19 @@ module UnitedStates
       end
 
       # @param string [String]
-      #  the abbreviation of the State
-      # @raise [UnitedStates::State::Abbreviation::StringTooLongError]
+      #  the postal code of the State
+      # @raise [UnitedStates::State::PostalCode::StringTooLongError]
       #  if the string is over 2 characters in length
-      # @raise [UnitedStates::State::Abbreviation::StringTooShortError]
+      # @raise [UnitedStates::State::PostalCode::StringTooShortError]
       #  if the string is under 2 characters in length
-      # @return [UnitedStates::State::Abbreviation]
+      # @return [UnitedStates::State::PostalCode]
       def initialize(string)
         ensure_string_not_too_long(string)
         ensure_string_not_too_short(string)
         @string = string
       end
 
-      # @param [UnitedStates::State::Abbreviation]
+      # @param [UnitedStates::State::PostalCode]
       # @return [Boolean]
       #  whether or not other.to_s matches self.to_s
       def ==(other)
@@ -57,7 +57,7 @@ module UnitedStates
       end
 
       # @return [String]
-      #  an all uppercase version of this Abbreviation
+      #  an all uppercase version of this PostalCode
       def to_s
         uppercase
       end
@@ -65,25 +65,25 @@ module UnitedStates
       private
 
       # @param string [String]
-      # @raise [UnitedStates::State::Abbreviation::StringTooLongError]
+      # @raise [UnitedStates::State::PostalCode::StringTooLongError]
       #  if the string is over 2 characters in length
       # @return [true]
       #  if the string is under 2 characters in length
       def ensure_string_not_too_long(string)
         return true if string.length <= 2
         raise StringTooLongError,
-              "#{string} too long, abbreviations must be 2 characters"
+              "#{string} too long, postal codes must be 2 characters"
       end
 
       # @param string [String]
-      # @raise [UnitedStates::State::Abbreviation::StringTooShortError]
+      # @raise [UnitedStates::State::PostalCode::StringTooShortError]
       #  if the string is under 2 characters in length
       # @return [true]
       #  if the string is 2 characters or more in length
       def ensure_string_not_too_short(string)
         return true if string.length >= 2
         raise StringTooShortError,
-              "#{string} too short, abbreviations must be 2 characters"
+              "#{string} too short, postal codes must be 2 characters"
       end
     end
   end

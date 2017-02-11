@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kWhittington/united_states.svg?style=svg)](https://circleci.com/gh/kWhittington/united_states)
 
-The names and abbreviations of each United States of America State.
+The names and postal codes of each United States of America State.
 
 ## Installation
 
@@ -29,8 +29,8 @@ UnitedStates.all
 # => [#<UnitedStates::State::Designation...@string="WY">]
 UnitedStates.names
 #=> [#<UnitedStates::State::Name...@string="Wyoming">]
-UnitedStates.abbreviations
-#=> [#<UnitedStates::State::Abbreviation...@string="WY"]
+UnitedStates.postal_codes
+#=> [#<UnitedStates::State::PostalCode...@string="WY"]
 ```
 
 ## Development

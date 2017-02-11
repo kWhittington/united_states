@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['Kyle Whittington']
   spec.email = ['kyle.thomas.whittington@gmail.com']
 
-  spec.summary = 'The United States names and abbreviations.'
-  spec.description = 'Allows for getting of state names and abbreviations '\
+  spec.summary = 'The United States names and postal codes.'
+  spec.description = 'Allows for getting of state names and postal codes '\
                      'in various formats.'
   spec.homepage = 'https://github.com/kWhittington/united_states'
   spec.license = 'MIT'

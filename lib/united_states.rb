@@ -7,7 +7,7 @@ require 'united_states/state/designation'
 # Top-level namespace for this gem.
 module UnitedStates
   # Thrown when someone attempts to search for a state with
-  # the wrong name or abbreviation.
+  # the wrong name or postal code.
   class NoDesignationFoundError < StandardError
     DEFAULT_MESSAGE = 'No State with that name was found.'
 
@@ -16,10 +16,10 @@ module UnitedStates
     end
   end
 
-  # @return [Array<UnitedStates::State::Abbreviation>]
-  #  a collection of all U.S. State Abbreviations.
-  def self.abbreviations
-    all.map(&:abbreviation)
+  # @return [Array<UnitedStates::State::PostalCode>]
+  #  a collection of all U.S. State postal codes.
+  def self.postal_codes
+    all.map(&:postal_code)
   end
 
   # rubocop: disable Metrics/AbcSize
@@ -29,105 +29,105 @@ module UnitedStates
   def self.all
     [
       UnitedStates::State::Designation.new(
-        name: 'Alabama', abbreviation: 'AL'),
+        name: 'Alabama', postal_code: 'AL'),
       UnitedStates::State::Designation.new(
-        name: 'Alaska', abbreviation: 'AK'),
+        name: 'Alaska', postal_code: 'AK'),
       UnitedStates::State::Designation.new(
-        name: 'Arizona', abbreviation: 'AZ'),
+        name: 'Arizona', postal_code: 'AZ'),
       UnitedStates::State::Designation.new(
-        name: 'Arkansas', abbreviation: 'AR'),
+        name: 'Arkansas', postal_code: 'AR'),
       UnitedStates::State::Designation.new(
-        name: 'California', abbreviation: 'CA'),
+        name: 'California', postal_code: 'CA'),
       UnitedStates::State::Designation.new(
-        name: 'Colorado', abbreviation: 'CO'),
+        name: 'Colorado', postal_code: 'CO'),
       UnitedStates::State::Designation.new(
-        name: 'Connecticut', abbreviation: 'CT'),
+        name: 'Connecticut', postal_code: 'CT'),
       UnitedStates::State::Designation.new(
-        name: 'Delaware', abbreviation: 'DE'),
+        name: 'Delaware', postal_code: 'DE'),
       UnitedStates::State::Designation.new(
-        name: 'Florida', abbreviation: 'FL'),
+        name: 'Florida', postal_code: 'FL'),
       UnitedStates::State::Designation.new(
-        name: 'Georgia', abbreviation: 'GA'),
+        name: 'Georgia', postal_code: 'GA'),
       UnitedStates::State::Designation.new(
-        name: 'Hawaii', abbreviation: 'HI'),
+        name: 'Hawaii', postal_code: 'HI'),
       UnitedStates::State::Designation.new(
-        name: 'Idaho', abbreviation: 'ID'),
+        name: 'Idaho', postal_code: 'ID'),
       UnitedStates::State::Designation.new(
-        name: 'Illinois', abbreviation: 'IL'),
+        name: 'Illinois', postal_code: 'IL'),
       UnitedStates::State::Designation.new(
-        name: 'Indiana', abbreviation: 'IN'),
+        name: 'Indiana', postal_code: 'IN'),
       UnitedStates::State::Designation.new(
-        name: 'Iowa', abbreviation: 'IA'),
+        name: 'Iowa', postal_code: 'IA'),
       UnitedStates::State::Designation.new(
-        name: 'Kansas', abbreviation: 'KS'),
+        name: 'Kansas', postal_code: 'KS'),
       UnitedStates::State::Designation.new(
-        name: 'Kentucky', abbreviation: 'KY'),
+        name: 'Kentucky', postal_code: 'KY'),
       UnitedStates::State::Designation.new(
-        name: 'Louisiana', abbreviation: 'LA'),
+        name: 'Louisiana', postal_code: 'LA'),
       UnitedStates::State::Designation.new(
-        name: 'Maine', abbreviation: 'ME'),
+        name: 'Maine', postal_code: 'ME'),
       UnitedStates::State::Designation.new(
-        name: 'Maryland', abbreviation: 'MD'),
+        name: 'Maryland', postal_code: 'MD'),
       UnitedStates::State::Designation.new(
-        name: 'Massachusetts', abbreviation: 'MA'),
+        name: 'Massachusetts', postal_code: 'MA'),
       UnitedStates::State::Designation.new(
-        name: 'Michigan', abbreviation: 'MI'),
+        name: 'Michigan', postal_code: 'MI'),
       UnitedStates::State::Designation.new(
-        name: 'Minnesota', abbreviation: 'MN'),
+        name: 'Minnesota', postal_code: 'MN'),
       UnitedStates::State::Designation.new(
-        name: 'Mississippi', abbreviation: 'MS'),
+        name: 'Mississippi', postal_code: 'MS'),
       UnitedStates::State::Designation.new(
-        name: 'Missouri', abbreviation: 'MO'),
+        name: 'Missouri', postal_code: 'MO'),
       UnitedStates::State::Designation.new(
-        name: 'Montana', abbreviation: 'MT'),
+        name: 'Montana', postal_code: 'MT'),
       UnitedStates::State::Designation.new(
-        name: 'Nebraska', abbreviation: 'NE'),
+        name: 'Nebraska', postal_code: 'NE'),
       UnitedStates::State::Designation.new(
-        name: 'Nevada', abbreviation: 'NV'),
+        name: 'Nevada', postal_code: 'NV'),
       UnitedStates::State::Designation.new(
-        name: 'New Hampshire', abbreviation: 'NH'),
+        name: 'New Hampshire', postal_code: 'NH'),
       UnitedStates::State::Designation.new(
-        name: 'New Jersey', abbreviation: 'NJ'),
+        name: 'New Jersey', postal_code: 'NJ'),
       UnitedStates::State::Designation.new(
-        name: 'New Mexico', abbreviation: 'NM'),
+        name: 'New Mexico', postal_code: 'NM'),
       UnitedStates::State::Designation.new(
-        name: 'New York', abbreviation: 'NY'),
+        name: 'New York', postal_code: 'NY'),
       UnitedStates::State::Designation.new(
-        name: 'North Carolina', abbreviation: 'NC'),
+        name: 'North Carolina', postal_code: 'NC'),
       UnitedStates::State::Designation.new(
-        name: 'North Dakota', abbreviation: 'ND'),
+        name: 'North Dakota', postal_code: 'ND'),
       UnitedStates::State::Designation.new(
-        name: 'Ohio', abbreviation: 'OH'),
+        name: 'Ohio', postal_code: 'OH'),
       UnitedStates::State::Designation.new(
-        name: 'Oklahoma', abbreviation: 'OK'),
+        name: 'Oklahoma', postal_code: 'OK'),
       UnitedStates::State::Designation.new(
-        name: 'Oregon', abbreviation: 'OR'),
+        name: 'Oregon', postal_code: 'OR'),
       UnitedStates::State::Designation.new(
-        name: 'Pennsylvania', abbreviation: 'PA'),
+        name: 'Pennsylvania', postal_code: 'PA'),
       UnitedStates::State::Designation.new(
-        name: 'Rhode Island', abbreviation: 'RI'),
+        name: 'Rhode Island', postal_code: 'RI'),
       UnitedStates::State::Designation.new(
-        name: 'South Carolina', abbreviation: 'SC'),
+        name: 'South Carolina', postal_code: 'SC'),
       UnitedStates::State::Designation.new(
-        name: 'South Dakota', abbreviation: 'SD'),
+        name: 'South Dakota', postal_code: 'SD'),
       UnitedStates::State::Designation.new(
-        name: 'Tennessee', abbreviation: 'TN'),
+        name: 'Tennessee', postal_code: 'TN'),
       UnitedStates::State::Designation.new(
-        name: 'Texas', abbreviation: 'TX'),
+        name: 'Texas', postal_code: 'TX'),
       UnitedStates::State::Designation.new(
-        name: 'Utah', abbreviation: 'UT'),
+        name: 'Utah', postal_code: 'UT'),
       UnitedStates::State::Designation.new(
-        name: 'Vermont', abbreviation: 'VT'),
+        name: 'Vermont', postal_code: 'VT'),
       UnitedStates::State::Designation.new(
-        name: 'Virginia', abbreviation: 'VA'),
+        name: 'Virginia', postal_code: 'VA'),
       UnitedStates::State::Designation.new(
-        name: 'Washington', abbreviation: 'WA'),
+        name: 'Washington', postal_code: 'WA'),
       UnitedStates::State::Designation.new(
-        name: 'West Virginia', abbreviation: 'WV'),
+        name: 'West Virginia', postal_code: 'WV'),
       UnitedStates::State::Designation.new(
-        name: 'Wisconsin', abbreviation: 'WI'),
+        name: 'Wisconsin', postal_code: 'WI'),
       UnitedStates::State::Designation.new(
-        name: 'Wyoming', abbreviation: 'WY')
+        name: 'Wyoming', postal_code: 'WY')
     ]
   end
   # rubocop: enable Metrics/AbcSize
@@ -137,7 +137,7 @@ module UnitedStates
   # @raise [NoDesignationFoundError]
   #  if no state Designation exists with the given name
   # @return [UnitedStates::State::Desgination]
-  #  the State Desgination matching the provided name/abbreviation.
+  #  the State Desgination matching the provided name/postal code.
   # @example
   #  UnitedStates.find_by_name('louisiana') # => UnitedSt...Designation
   #  UnitedStates.find_by_name('marx') # => NoDesignationFoundError
