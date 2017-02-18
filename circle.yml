@@ -1,6 +1,6 @@
 dependencies:
   override:
-    - rvm-exec 2.1.0, 2.2.0 ./bin/setup
+    - rvm 2.1.0,2.2.0 --verbose do ./bin/setup
 test:
   override:
-    - rvm-exec 2.1.0, 2.2.0 ./bin/test
+    - rvm 2.1.0,2.2.0 --verbose do ./bin/test
