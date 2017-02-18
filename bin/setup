@@ -3,6 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
+sudo gem update --system
 gem install bundler
 bundle install
 
