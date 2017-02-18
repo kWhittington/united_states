@@ -3,4 +3,4 @@ dependencies:
     - rvm 2.1.0,2.2.0 --verbose do ./bin/setup
 test:
   override:
-    - rvm 2.1.0,2.2.0 --verbose do ./bin/test
+    - rvm 2.1.0,2.2.0 --verbose do ./bin/circle_ci/test
