@@ -20,6 +20,12 @@ Or install it yourself as:
 
     $ gem install united_states
 
+`united_states` is tested against the following [stable `ruby` versions](https://www.ruby-lang.org/en/downloads/):
+  * MRI 2.1.10
+  * MRI 2.2.6
+  * MRI 2.3.3
+  * MRI 2.4.0
+
 ## Usage
 
 ```ruby

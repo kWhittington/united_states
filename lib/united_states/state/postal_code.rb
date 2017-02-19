@@ -7,7 +7,8 @@ module UnitedStates
       # Thrown when someone attempts to make a PostalCode instance
       # from a string longer than 2 characters.
       class StringTooLongError < StandardError
-        DEFAULT_MESSAGE = 'string too long, postal code must be 2 characters'
+        DEFAULT_MESSAGE = 'string too long, postal code must be '\
+                          '2 characters'.freeze
 
         def initialize(message = DEFAULT_MESSAGE)
           super(message)
@@ -17,7 +18,8 @@ module UnitedStates
       # Thrown when someone attempts to make a PostalCode instance
       # from a string shorter than 2 characters.
       class StringTooShortError < StandardError
-        DEFAULT_MESSAGE = 'string too short, postal codes must be 2 characters'
+        DEFAULT_MESSAGE = 'string too short, postal codes must be '\
+                          '2 characters'.freeze
 
         def initialize(message = DEFAULT_MESSAGE)
           super(message)

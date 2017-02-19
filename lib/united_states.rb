@@ -9,7 +9,7 @@ module UnitedStates
   # Thrown when someone attempts to search for a state with
   # the wrong name or postal code.
   class NoDesignationFoundError < StandardError
-    DEFAULT_MESSAGE = 'No State was found.'
+    DEFAULT_MESSAGE = 'No State was found.'.freeze
 
     def initialize(message = DEFAULT_MESSAGE)
       super(message)
