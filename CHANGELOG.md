@@ -9,6 +9,8 @@ __Change Groups__:
 `Added`, `Changed`, `Deprecated`, `Fixed`, `Removed`, `Security`
 
 ## [Unreleased]
+
+## [1.1.1] - 2017-02-18
 ### Added
 - `CircleCI` now tests against `Ruby` versions `2.1.10`, `2.2.6`, `2.3.3`, `2.4.0`.
 - [`CHANGELOG.md`](CHANGELOG.md) following http://keepachangelog.com/en/0.3.0/.
