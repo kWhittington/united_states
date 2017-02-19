@@ -47,19 +47,51 @@ UnitedStates['car']
 
 ## Development
 
-After checking out the repo, run `./bin/setup` to install dependencies.
-Then, run `./bin/test` to run code quality checks and tests.
-Then, run './bin/document' to generate `doc/` and open `doc/index.html`
+### Branching
+
+Checkout the repo. If making a `hot_fix` branch, branch from
+`master`. If making a `bug_fix`/`chore`/`enhancement` branch,
+branch from
+[`development`](https://github.com/kWhittington/united_states/tree/develop).
+Be sure to update [`CHANGELOG.md`](CHANGELOG.md)
+(see http://keepachangelog.com/en/0.3.0/) with your changes.
+
+### Setup
+Run `./bin/setup` to install dependencies.
+
+### Testing
+Run `./bin/test` to run code quality checks and tests.
+
+### Documenting
+Run `./bin/document` to generate `doc/` and open
+[`doc/index.html`](doc/index.html)
 to view the documentation. See
 http://www.rubydoc.info/gems/yard/file/docs/GettingStarted.md for
 documentation syntax.
 
-You can also run `./bin/console` for an interactive prompt that will allow
+### Seat-of-the-Pants Testing
+Run `./bin/console` for an interactive prompt that will allow
 you to experiment.
 
+### Manual installation
 To install this gem onto your local machine, run `bundle exec rake
-install`. To release a new version, update the version number in
-`version.rb`, and then run `bundle exec rake release`, which will create a
+install`.
+
+### Deployment
+To release a new version, you must first have authorization to push
+to `rubygems`. If so, make a new
+`chore/#ISSUE_NUMBER_update_version_to_MAJOR_MINOR_PATCH`, update
+`UnitedStates::VERSION` number (per
+[Semantic Versioning](http://semver.org/)) in
+[`lib/united_states/version.rb`](lib/united_states/version.rb),
+change the `Unreleased` section of `CHANGELOG.md` to the new version
+number, and then make a pull request merging to `development`.
+
+After `development` has been updated with the new version number,
+make a pull request merging the new changes to `master`.
+
+Once `master` has been updated, checkout the latest `master`
+and run `bundle exec rake release`, which will create a
 git tag for the version, push git commits and tags, and push the
 `.gem` file to [rubygems.org](https://rubygems.org).
 
