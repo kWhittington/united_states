@@ -8,6 +8,8 @@ wget https://rubygems.org/rubygems/rubygems-2.6.10.tgz
 tar xzvf rubygems-2.6.10.tgz
 cd rubygems-2.6.10
 ruby setup.rb
+cd ..
+rm -rf rubygems-2.6.10
 bundle install
 
 # Do any other automated setup that you need to do here
