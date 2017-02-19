@@ -4,6 +4,8 @@
 require: rubocop-rspec
 
 AllCops:
+  Exclude:
+    - rubygems*/
   TargetRubyVersion: 2.3
 
 Documentation:
