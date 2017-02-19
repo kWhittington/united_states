@@ -79,9 +79,18 @@ install`.
 
 ### Deployment
 To release a new version, you must first have authorization to push
-to `rubygems`. If so, update the version number in
+to `rubygems`. If so, make a new
+`chore/#ISSUE_NUMBER_update_version_to_MAJOR_MINOR_PATCH`, update
+`UnitedStates::VERSION` number (per
+[Semantic Versioning](http://semver.org/)) in
 [`lib/united_states/version.rb`](lib/united_states/version.rb),
-and then run `bundle exec rake release`, which will create a
+and then make a pull request merging to `development`.
+
+After `development` has been updated with the new version number,
+make a pull request merging the new changes to `master`.
+
+Once `master` has been updated, checkout the latest `master`
+and run `bundle exec rake release`, which will create a
 git tag for the version, push git commits and tags, and push the
 `.gem` file to [rubygems.org](https://rubygems.org).
 
