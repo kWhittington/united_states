@@ -84,7 +84,8 @@ to `rubygems`. If so, make a new
 `UnitedStates::VERSION` number (per
 [Semantic Versioning](http://semver.org/)) in
 [`lib/united_states/version.rb`](lib/united_states/version.rb),
-and then make a pull request merging to `development`.
+change the `Unreleased` section of `CHANGELOG.md` to the new version
+number, and then make a pull request merging to `development`.
 
 After `development` has been updated with the new version number,
 make a pull request merging the new changes to `master`.
