@@ -16,7 +16,8 @@ __Change Groups__:
 
 ### Changed
 - `./bin/` scripts are verbose.
-- [`README.md`](README.md) `Development` section expanded with branching details.
+- `README.md` `Development` section expanded with branching details.
+- `README.md` `Deployment` section expanded with branching details.
 
 ## [1.1.0] - 2017-02-11
 ### Added
