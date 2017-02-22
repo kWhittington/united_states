@@ -6,14 +6,12 @@ module UnitedStates
   module State
     # Represents the various way to designate a state (e.g. name, postal code).
     class Designation
-      # @!attribute [r] postal_code
-      #   @return [UnitedStates::State::PostalCode]
-      #    the state's postal code
+      # @return [UnitedStates::State::PostalCode]
+      #  the state's postal code
       attr_reader :postal_code
 
-      # @!attribute [r] name
-      #   @return [UnitedStates::State::Name]
-      #    the state's name
+      # @return [UnitedStates::State::Name]
+      #  the state's name
       attr_reader :name
 
       # @param name [String]
