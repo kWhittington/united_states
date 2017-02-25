@@ -9,6 +9,17 @@ __Change Groups__:
 `Added`, `Changed`, `Deprecated`, `Fixed`, `Removed`, `Security`
 
 ## [Unreleased]
+### Added
+- `UnitedStates.array_from_hashes(*hashes)`
+- `UnitedStates::State::Designation.from_hash(**hash)`
+- Example of `UnitedStates::State::Designation#initialize(...)`
+
+### Changed
+- `UnitedStates.all` to use `UnitedStates.array_from_hashes(*hashes)`
+
+### Fixed
+- `Designation`, `Name`, and `PostalCode` yard documentation typos.
+- `"Abbrevation"` typos, now `"PostalCode"`.
 
 ## [1.1.1] - 2017-02-18
 ### Added

@@ -287,6 +287,47 @@ RSpec.describe UnitedStates do
   end
   # rubocop: enable RSpec/ExampleLength
 
+  describe '.array_from_hashes(hashes)' do
+    context 'when hashes is empty' do
+      subject(:array_from_hashes) { described_class.array_from_hashes }
+
+      it('is an Array') { is_expected.to be_an(Array) }
+      it('is empty') { is_expected.to be_empty }
+    end
+
+    context 'when hashes has one hash in it' do
+      subject(:array_from_hashes) { described_class.array_from_hashes(hash) }
+      let(:hash) { { name: 'louisiana', postal_code: 'la' } }
+
+      it('is an Array') { is_expected.to be_an(Array) }
+
+      it 'includes a UnitedStates::State::Designation from the hash' do
+        is_expected.to include(
+          UnitedStates::State::Designation.new(
+            name: 'LOUISIANA', postal_code: 'LA'))
+      end
+    end
+
+    context 'when hashes has multiple hashes in it' do
+      subject :array_from_hashes do
+        described_class.array_from_hashes(florida_hash, mississippi_hash)
+      end
+
+      let(:florida_hash) { { name: 'FlorIDA', postal_code: 'fL' } }
+      let(:mississippi_hash) { { name: 'Mississippi', postal_code: 'Ms' } }
+
+      it('is an Array') { is_expected.to be_an(Array) }
+
+      it 'includes a UnitedStates::State::Designation for each' do
+        is_expected.to contain_exactly(
+          UnitedStates::State::Designation.new(
+            name: 'florida', postal_code: 'fl'),
+          UnitedStates::State::Designation.new(
+            name: 'mississippi', postal_code: 'ms'))
+      end
+    end
+  end
+
   describe '.find_by_name(name)' do
     subject(:find_by_name) { described_class.find_by_name(name) }
 

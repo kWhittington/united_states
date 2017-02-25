@@ -1,10 +1,34 @@
 # frozen_string_literal: true
 require 'spec_helper'
+require 'faker'
 require 'united_states/state/designation'
 
 RSpec.describe UnitedStates::State::Designation do
   subject :designation do
     described_class.new(name: name, postal_code: postal_code)
+  end
+
+  describe '.from_hash(hash)' do
+    context 'when { } are omitted' do
+      subject :from_hash do
+        described_class.from_hash(name: 'georgia', postal_code: 'ga')
+      end
+
+      it 'is a UnitedStates::State::Designation from the hash' do
+        is_expected.to eq(
+          described_class.new(name: 'Georgia', postal_code: 'GA'))
+      end
+    end
+
+    context 'when hash is a variable' do
+      subject(:from_hash) { described_class.from_hash(hash) }
+      let(:hash) { { name: 'GEORGIA', postal_code: 'GA' } }
+
+      it 'is a UnitedStates::State::Designation from the hash' do
+        is_expected.to eq(
+          described_class.new(name: 'Georgia', postal_code: 'GA'))
+      end
+    end
   end
 
   describe '.new(name:, postal_code:)' do
