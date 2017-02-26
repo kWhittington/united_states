@@ -10,12 +10,15 @@ __Change Groups__:
 
 ## [Unreleased]
 ### Added
+- `UnitedStates.config_path`
+- `UnitedStates.array_from_yaml_file(path:)`
+- `UnitedStates.array_from_yaml(yaml)`
 - `UnitedStates.array_from_hashes(*hashes)`
 - `UnitedStates::State::Designation.from_hash(**hash)`
 - Example of `UnitedStates::State::Designation#initialize(...)`
 
 ### Changed
-- `UnitedStates.all` to use `UnitedStates.array_from_hashes(*hashes)`
+- `UnitedStates.all` to use `UnitedStates.array_from_yaml_file(path:)`
 
 ### Fixed
 - `Designation`, `Name`, and `PostalCode` yard documentation typos.

@@ -328,6 +328,224 @@ RSpec.describe UnitedStates do
     end
   end
 
+  describe '.array_from_yaml(yaml)' do
+    subject(:array_from_yaml) { described_class.array_from_yaml(yaml) }
+
+    context 'when the yaml has no name' do
+      let :yaml do
+        <<-YAML
+---
+        YAML
+      end
+
+      it('is an empty Array') { is_expected.to be_empty }
+    end
+
+    context 'when the yaml has no postal codes' do
+      let :yaml do
+        <<-YAML
+---
+Louisiana:
+        YAML
+      end
+
+      it 'raises UnitedStates::State::PostalCode::StringTooShortError' do
+        expect { array_from_yaml }.to raise_error(
+          UnitedStates::State::PostalCode::StringTooShortError,
+          ' too short, postal codes must be 2 characters')
+      end
+    end
+
+    context 'when the yaml has a postal code over 2 characters' do
+      let :yaml do
+        <<-YAML
+---
+Louisiana:
+  postal_code: LOUS
+        YAML
+      end
+
+      it 'raises UnitedStates::State::PostalCode::StringTooLongError' do
+        expect { array_from_yaml }.to raise_error(
+          UnitedStates::State::PostalCode::StringTooLongError,
+          'LOUS too long, postal codes must be 2 characters')
+      end
+    end
+
+    context 'when the yaml includes postal code info' do
+      let :yaml do
+        <<-YAML
+---
+New York:
+  postal_code: NY
+        YAML
+      end
+
+      it 'is an Array with a matching name and postal code' do
+        is_expected.to contain_exactly(
+          UnitedStates::State::Designation.new(
+            name: 'new york', postal_code: 'ny'))
+      end
+    end
+
+    context 'when the yaml has multiple designations defined' do
+      let :yaml do
+        <<-YAML
+---
+Maine:
+  postal_code: ME
+Wisconsin:
+  postal_code: WI
+        YAML
+      end
+
+      it 'is an Array with matching designations' do
+        is_expected.to contain_exactly(
+          UnitedStates::State::Designation.new(
+            name: 'maine', postal_code: 'me'),
+          UnitedStates::State::Designation.new(
+            name: 'WISCONSIN', postal_code: 'WI'))
+      end
+    end
+  end
+
+  describe '.array_from_yaml_file(path:)' do
+    subject :array_from_yaml_file do
+      described_class.array_from_yaml_file(path: path)
+    end
+
+    let(:pathname) { Pathname.new(path) }
+
+    context 'when no file exists at the given path' do
+      let(:path) { './tmp/does_not_exist.yml' }
+
+      before do
+        Pathname.new(path).delete if Pathname.new(path).exist?
+      end
+
+      it 'raises "#{path} does not exist."' do
+        expect { array_from_yaml_file }.to raise_error(
+          "\"./tmp/does_not_exist.yml\" does not exist.\n"\
+          'Please supply a path to a YAML file.')
+      end
+    end
+
+    context 'when the file is empty' do
+      let(:path) { './tmp/states.yml' }
+
+      let :yaml do
+        <<-YAML
+---
+        YAML
+      end
+
+      before { pathname.binwrite(yaml) }
+
+      after { pathname.delete if pathname.exist? }
+
+      it('is an empty Array') { is_expected.to be_empty }
+    end
+
+    context 'when the file has no postal code' do
+      let(:path) { './tmp/states.yml' }
+
+      let :yaml do
+        <<-YAML
+---
+Louisiana:
+        YAML
+      end
+
+      before { pathname.binwrite(yaml) }
+
+      after { pathname.delete if pathname.exist? }
+
+      it 'raises UnitedStates::State::PostalCode::StringTooShortError' do
+        expect { array_from_yaml_file }.to raise_error(
+          UnitedStates::State::PostalCode::StringTooShortError,
+          ' too short, postal codes must be 2 characters')
+      end
+    end
+
+    context 'when the file has a postal code over 2 characters' do
+      let(:path) { './tmp/states.yml' }
+
+      let :yaml do
+        <<-YAML
+---
+Louisiana:
+  postal_code: LOUS
+        YAML
+      end
+
+      before { pathname.binwrite(yaml) }
+
+      after { pathname.delete if pathname.exist? }
+
+      it 'raises UnitedStates::State::PostalCode::StringTooLongError' do
+        expect { array_from_yaml_file }.to raise_error(
+          UnitedStates::State::PostalCode::StringTooLongError,
+          'LOUS too long, postal codes must be 2 characters')
+      end
+    end
+
+    context 'when the file includes postal code info' do
+      let(:path) { './tmp/states.yml' }
+
+      let :yaml do
+        <<-YAML
+---
+New York:
+  postal_code: NY
+        YAML
+      end
+
+      before { pathname.binwrite(yaml) }
+
+      after { pathname.delete if pathname.exist? }
+
+      it 'is an Array with a matching name and postal code' do
+        is_expected.to contain_exactly(
+          UnitedStates::State::Designation.new(
+            name: 'new york', postal_code: 'ny'))
+      end
+    end
+
+    context 'when the file has multiple designations defined' do
+      let(:path) { './tmp/states.yml' }
+
+      let :yaml do
+        <<-YAML
+---
+Maine:
+  postal_code: ME
+Wisconsin:
+  postal_code: WI
+        YAML
+      end
+
+      before { pathname.binwrite(yaml) }
+
+      after { pathname.delete if pathname.exist? }
+
+      it 'is an Array with matching designations' do
+        is_expected.to contain_exactly(
+          UnitedStates::State::Designation.new(
+            name: 'maine', postal_code: 'me'),
+          UnitedStates::State::Designation.new(
+            name: 'WISCONSIN', postal_code: 'WI'))
+      end
+    end
+  end
+
+  describe '.config_path' do
+    subject(:config_path) { described_class.config_path }
+
+    it 'is "./lib/united_states/designations.yml"' do
+      is_expected.to eq('./lib/united_states/designations.yml')
+    end
+  end
+
   describe '.find_by_name(name)' do
     subject(:find_by_name) { described_class.find_by_name(name) }
 
