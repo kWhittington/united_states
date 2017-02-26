@@ -11,7 +11,7 @@ module UnitedStates
         @string = string.to_s
       end
 
-      # @param [UnitedStates::State::Name]
+      # @param other [UnitedStates::State::Name]
       # @return [Boolean]
       #  whether or not other.to_s matches self.to_s
       def ==(other)
