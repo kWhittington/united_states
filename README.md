@@ -88,12 +88,38 @@ change the `Unreleased` section of `CHANGELOG.md` to the new version
 number, and then make a pull request merging to `development`.
 
 After `development` has been updated with the new version number,
-make a pull request merging the new changes to `master`.
+a new `release/MAJOR.MINOR.PATCH` branch needs to be pushed up-stream.
+We'll want to squash all changes for the new version into a single commit
+onto `master`. To accomplish this, you can branch the release branch off of
+`development` and then rebase it with `origin/master`, handling any
+conflicts. Once the release branch can me fast-forward merged with
+`master`, push the release branch up-stream and make a pull request
+into `master`.
+
+```bash
+git fetch
+git checkout development
+git pull # if local branch needs updating
+git checkout -b release/1.3.1
+git rebase origin/master
+git push -u origin release/1.3.1
+```
 
 Once `master` has been updated, checkout the latest `master`
 and run `bundle exec rake release`, which will create a
 git tag for the version, push git commits and tags, and push the
 `.gem` file to [rubygems.org](https://rubygems.org).
+
+```bash
+git fetch
+git checkout master
+git pull # if local branch needs updating
+bundle exec rake release
+united_states 1.3.1 built to pkg/united_states-1.3.1.gem.
+Tagged v1.3.1.
+Pushed git commits and tags.
+Pushed united_states 1.3.1 to rubygems.org.
+```
 
 ## Contributing
 

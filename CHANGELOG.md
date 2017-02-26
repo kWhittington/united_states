@@ -9,6 +9,8 @@ __Change Groups__:
 `Added`, `Changed`, `Deprecated`, `Fixed`, `Removed`, `Security`
 
 ## [Unreleased]
+### Changed
+- `README.md` `Deployment` instructions updated with squash-merge walkthrough.
 
 ## [1.2.0] - 2017-02-26
 ### Added
