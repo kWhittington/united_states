@@ -30,66 +30,73 @@ module UnitedStates
     find_by_postal_code(name_or_postal_code)
   end
 
-  # rubocop: disable Metrics/MethodLength
-  # rubocop: disable Style/BracesAroundHashParameters
-
   # @return [Array<UnitedStates::State::Designation>]
   #  a collection of all U.S. State Designations.
   def self.all
-    array_from_hashes(
-      { name: 'Alabama', postal_code: 'AL' },
-      { name: 'Alaska', postal_code: 'AK' },
-      { name: 'Arizona', postal_code: 'AZ' },
-      { name: 'Arkansas', postal_code: 'AR' },
-      { name: 'California', postal_code: 'CA' },
-      { name: 'Colorado', postal_code: 'CO' },
-      { name: 'Connecticut', postal_code: 'CT' },
-      { name: 'Delaware', postal_code: 'DE' },
-      { name: 'Florida', postal_code: 'FL' },
-      { name: 'Georgia', postal_code: 'GA' },
-      { name: 'Hawaii', postal_code: 'HI' },
-      { name: 'Idaho', postal_code: 'ID' },
-      { name: 'Illinois', postal_code: 'IL' },
-      { name: 'Indiana', postal_code: 'IN' },
-      { name: 'Iowa', postal_code: 'IA' },
-      { name: 'Kansas', postal_code: 'KS' },
-      { name: 'Kentucky', postal_code: 'KY' },
-      { name: 'Louisiana', postal_code: 'LA' },
-      { name: 'Maine', postal_code: 'ME' },
-      { name: 'Maryland', postal_code: 'MD' },
-      { name: 'Massachusetts', postal_code: 'MA' },
-      { name: 'Michigan', postal_code: 'MI' },
-      { name: 'Minnesota', postal_code: 'MN' },
-      { name: 'Mississippi', postal_code: 'MS' },
-      { name: 'Missouri', postal_code: 'MO' },
-      { name: 'Montana', postal_code: 'MT' },
-      { name: 'Nebraska', postal_code: 'NE' },
-      { name: 'Nevada', postal_code: 'NV' },
-      { name: 'New Hampshire', postal_code: 'NH' },
-      { name: 'New Jersey', postal_code: 'NJ' },
-      { name: 'New Mexico', postal_code: 'NM' },
-      { name: 'New York', postal_code: 'NY' },
-      { name: 'North Carolina', postal_code: 'NC' },
-      { name: 'North Dakota', postal_code: 'ND' },
-      { name: 'Ohio', postal_code: 'OH' },
-      { name: 'Oklahoma', postal_code: 'OK' },
-      { name: 'Oregon', postal_code: 'OR' },
-      { name: 'Pennsylvania', postal_code: 'PA' },
-      { name: 'Rhode Island', postal_code: 'RI' },
-      { name: 'South Carolina', postal_code: 'SC' },
-      { name: 'South Dakota', postal_code: 'SD' },
-      { name: 'Tennessee', postal_code: 'TN' },
-      { name: 'Texas', postal_code: 'TX' },
-      { name: 'Utah', postal_code: 'UT' },
-      { name: 'Vermont', postal_code: 'VT' },
-      { name: 'Virginia', postal_code: 'VA' },
-      { name: 'Washington', postal_code: 'WA' },
-      { name: 'West Virginia', postal_code: 'WV' },
-      { name: 'Wisconsin', postal_code: 'WI' },
-      { name: 'Wyoming', postal_code: 'WY' })
+    array_from_yaml_file(path: config_path)
   end
-  # rubocop: enable Metrics/MethodLength
-  # rubocop: enable Style/BracesAroundHashParameters
+
+  # @example
+  #  UnitedStates.array_from_hashes(
+  #    { name: 'Florida', postal_code: 'FL' },
+  #    { name: 'Iowa', postal_code: 'IA'})
+  # @param hashes [Array<Hash>]
+  #  a collection of attributes as hashes
+  # @return [Array<UnitedStates::State::Designation>]
+  #  a collection of state designations made from the given hash attributes
+  def self.array_from_hashes(*hashes)
+    hashes.map do |hash|
+      UnitedStates::State::Designation.from_hash(hash)
+    end
+  end
+
+  # @example
+  #  require 'united_states'
+  #
+  #  UnitedStates.array_from_yaml(
+  #    { Washington: { postal_code: 'WA' } }.to_yaml)
+  #  # => [<UnitedStates::State::Designation...>]
+  # @param yaml [String]
+  #  a String representation of YAML.
+  # @return [Array<UnitedStates::State::Designation>]
+  #  a collection of state designations made from the given hash attributes
+  # @raise UnitedStates::State::PostalCode::StringTooLongError
+  #  if a designation has a postal code that too long
+  # @raise UnitedStates::State::PostalCode::StringTooShortError
+  #  if a designation has no postal code defined or is too short
+  def self.array_from_yaml(yaml)
+    return [] unless YAML.safe_load(yaml)
+    YAML.safe_load(yaml).map do |key, value|
+      UnitedStates::State::Designation.new(
+        name: key, postal_code: value && value.fetch('postal_code', ''))
+    end
+  end
+
+  # @example
+  #  require 'united_states'
+  #
+  #  UnitedStates.array_from_yaml_file(path: './states.yml')
+  #  # => [<UnitedStates::State::Designation...>]
+  # @param path [String]
+  #  the path to the YAML file
+  # @return [Array<UnitedStates::State::Designation>]
+  #  a collection of state designations made from the YAML file
+  # @raise UnitedStates::State::PostalCode::StringTooLongError
+  #  if a designation has a postal code that too long
+  # @raise UnitedStates::State::PostalCode::StringTooShortError
+  #  if a designation has no postal code defined or is too short
+  def self.array_from_yaml_file(path:)
+    pathname = Pathname.new(path)
+    return array_from_yaml(pathname.read) if pathname.exist?
+    raise "\"#{path}\" does not exist.\n"\
+          'Please supply a path to a YAML file.'
+  end
+
+  # @return [String]
+  #  the path to the Designations yaml file
+  def self.config_path
+    './lib/united_states/designations.yml'
+  end
 
   # @example
   #  UnitedStates.find_by_name('louisiana') # => UnitedSt...Designation
@@ -118,20 +125,6 @@ module UnitedStates
     all.find { |designation| designation.postal_code == postal_code } || raise(
       NoDesignationFoundError,
       "No State with postal code, \"#{postal_code},\" was found.")
-  end
-
-  # @example
-  #  UnitedStates.array_from_hashes(
-  #    { name: 'Florida', postal_code: 'FL' },
-  #    { name: 'Iowa', postal_code: 'IA'})
-  # @param hashes [Array<Hash>]
-  #  a collection of attributes as hashes
-  # @return [Array<UnitedStates::State::Designation>]
-  #  a collection of state designations made from the given hash attributes
-  def self.array_from_hashes(*hashes)
-    hashes.map do |hash|
-      UnitedStates::State::Designation.from_hash(hash)
-    end
   end
 
   # @return [Array<UnitedStates::State::Name>]
