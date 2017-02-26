@@ -9,6 +9,8 @@ __Change Groups__:
 `Added`, `Changed`, `Deprecated`, `Fixed`, `Removed`, `Security`
 
 ## [Unreleased]
+
+## [1.2.0] - 2017-02-26
 ### Added
 - `UnitedStates.config_path`
 - `UnitedStates.array_from_yaml_file(path:)`
