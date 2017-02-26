@@ -40,7 +40,7 @@ module UnitedStates
         @string = string
       end
 
-      # @param [UnitedStates::State::PostalCode]
+      # @param other [UnitedStates::State::PostalCode]
       # @return [Boolean]
       #  whether or not other.to_s matches self.to_s
       def ==(other)
@@ -48,13 +48,13 @@ module UnitedStates
       end
 
       # @return [String]
-      #  an all lowercase version of this Abbrevation
+      #  an all lowercase version of this PostalCode
       def lowercase
         @string.downcase
       end
 
       # @return [String]
-      #  an all uppercase version of this Abbrevation
+      #  an all uppercase version of this PostalCode
       def uppercase
         @string.upcase
       end

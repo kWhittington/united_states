@@ -6,16 +6,34 @@ module UnitedStates
   module State
     # Represents the various way to designate a state (e.g. name, postal code).
     class Designation
-      # @!attribute [r] postal_code
-      #   @return [UnitedStates::State::PostalCode]
-      #    the state's postal code
+      # @return [UnitedStates::State::PostalCode]
+      #  the state's postal code
       attr_reader :postal_code
 
-      # @!attribute [r] name
-      #   @return [UnitedStates::State::Name]
-      #    the state's name
+      # @return [UnitedStates::State::Name]
+      #  the state's name
       attr_reader :name
 
+      # @example From Named Parameters
+      #  UnitedStates::State::Designation.from_hash(
+      #    name: 'Hawaii', postal_code: 'HI')
+      #  # => #<UnitedStates::State::Designation:0x...@string="HI">>
+      # @example From Variable
+      #  hawaii_hash = { name: 'Hawaii', postal_code: 'HI' }
+      #  UnitedStates::State::Designation.from_hash(hawaii_hash)
+      #  # => #<UnitedStates::State::Designation:0x...@string="HI">>
+      # @param hash [Hash]
+      #  a hash of Designation attributes, see {#initialize} for parameters
+      # @return [UnitedStates::State::Designation]
+      #  a Designation with attributes provided via hash
+      def self.from_hash(**hash)
+        new(name: hash[:name], postal_code: hash[:postal_code])
+      end
+
+      # @example
+      #  UnitedStates::State::Designation.new(
+      #    name: 'wyoming', postal_code: 'wy')
+      #  # => #<UnitedStates::State::Designation:0x007...@string="wy">>
       # @param name [String]
       # @param postal_code [String]
       # @raise [UnitedStates::State::PostalCode::StringTooLongError]

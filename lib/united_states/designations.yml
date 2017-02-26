@@ -1,0 +1,101 @@
+---
+Alabama:
+  postal_code: AL
+Alaska:
+  postal_code: AK
+Arizona:
+  postal_code: AZ
+Arkansas:
+  postal_code: AR
+California:
+  postal_code: CA
+Colorado:
+  postal_code: CO
+Connecticut:
+  postal_code: CT
+Delaware:
+  postal_code: DE
+Florida:
+  postal_code: FL
+Georgia:
+  postal_code: GA
+Hawaii:
+  postal_code: HI
+Idaho:
+  postal_code: ID
+Illinois:
+  postal_code: IL
+Indiana:
+  postal_code: IN
+Iowa:
+  postal_code: IA
+Kansas:
+  postal_code: KS
+Kentucky:
+  postal_code: KY
+Louisiana:
+  postal_code: LA
+Maine:
+  postal_code: ME
+Maryland:
+  postal_code: MD
+Massachusetts:
+  postal_code: MA
+Michigan:
+  postal_code: MI
+Minnesota:
+  postal_code: MN
+Mississippi:
+  postal_code: MS
+Missouri:
+  postal_code: MO
+Montana:
+  postal_code: MT
+Nebraska:
+  postal_code: NE
+Nevada:
+  postal_code: NV
+New Hampshire:
+  postal_code: NH
+New Jersey:
+  postal_code: NJ
+New Mexico:
+  postal_code: NM
+New York:
+  postal_code: NY
+North Carolina:
+  postal_code: NC
+North Dakota:
+  postal_code: ND
+Ohio:
+  postal_code: OH
+Oklahoma:
+  postal_code: OK
+Oregon:
+  postal_code: OR
+Pennsylvania:
+  postal_code: PA
+Rhode Island:
+  postal_code: RI
+South Carolina:
+  postal_code: SC
+South Dakota:
+  postal_code: SD
+Tennessee:
+  postal_code: TN
+Texas:
+  postal_code: TX
+Utah:
+  postal_code: UT
+Vermont:
+  postal_code: VT
+Virginia:
+  postal_code: VA
+Washington:
+  postal_code: WA
+West Virginia:
+  postal_code: WV
+Wisconsin:
+  postal_code: WI
+Wyoming:
+  postal_code: WY

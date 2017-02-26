@@ -10,6 +10,22 @@ __Change Groups__:
 
 ## [Unreleased]
 
+## [1.2.0] - 2017-02-26
+### Added
+- `UnitedStates.config_path`
+- `UnitedStates.array_from_yaml_file(path:)`
+- `UnitedStates.array_from_yaml(yaml)`
+- `UnitedStates.array_from_hashes(*hashes)`
+- `UnitedStates::State::Designation.from_hash(**hash)`
+- Example of `UnitedStates::State::Designation#initialize(...)`
+
+### Changed
+- `UnitedStates.all` to use `UnitedStates.array_from_yaml_file(path:)`
+
+### Fixed
+- `Designation`, `Name`, and `PostalCode` yard documentation typos.
+- `"Abbrevation"` typos, now `"PostalCode"`.
+
 ## [1.1.1] - 2017-02-18
 ### Added
 - `CircleCI` now tests against `Ruby` versions `2.1.10`, `2.2.6`, `2.3.3`, `2.4.0`.
