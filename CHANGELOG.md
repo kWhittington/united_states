@@ -9,6 +9,9 @@ __Change Groups__:
 `Added`, `Changed`, `Deprecated`, `Fixed`, `Removed`, `Security`
 
 ## [Unreleased]
+### Added
+- `required_ruby_version` set to `>= 2.1.0` in `.gemspec`
+
 ### Changed
 - `README.md` `Deployment` instructions updated with squash-merge walkthrough.
 
