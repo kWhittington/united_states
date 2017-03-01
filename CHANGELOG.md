@@ -10,9 +10,13 @@ __Change Groups__:
 
 ## [Unreleased]
 ### Added
+- `require` statements to all `@example`.
+- `UnitedStates::Array` to hold all `Array<UnitedStates::Designation>`
+  factory methods.
 - `required_ruby_version` set to `>= 2.1.0` in `.gemspec`
 
 ### Changed
+- `UnitedStates.array_...` methods now utilize `UnitedStates::Array` factory methods.
 - `README.md` `Deployment` instructions updated with squash-merge walkthrough.
 
 ## [1.2.0] - 2017-02-26

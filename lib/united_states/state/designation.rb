@@ -15,10 +15,14 @@ module UnitedStates
       attr_reader :name
 
       # @example From Named Parameters
+      #  require 'united_states/state/designation'
+      #
       #  UnitedStates::State::Designation.from_hash(
       #    name: 'Hawaii', postal_code: 'HI')
       #  # => #<UnitedStates::State::Designation:0x...@string="HI">>
       # @example From Variable
+      #  require 'united_states/state/designation'
+      #
       #  hawaii_hash = { name: 'Hawaii', postal_code: 'HI' }
       #  UnitedStates::State::Designation.from_hash(hawaii_hash)
       #  # => #<UnitedStates::State::Designation:0x...@string="HI">>
@@ -31,6 +35,8 @@ module UnitedStates
       end
 
       # @example
+      #  require 'united_states/state/designation'
+      #
       #  UnitedStates::State::Designation.new(
       #    name: 'wyoming', postal_code: 'wy')
       #  # => #<UnitedStates::State::Designation:0x007...@string="wy">>

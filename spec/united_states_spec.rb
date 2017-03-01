@@ -3,8 +3,11 @@ require 'spec_helper'
 require 'united_states'
 
 RSpec.describe UnitedStates do
-  it 'has a version number' do
-    expect(UnitedStates::VERSION).not_to be_nil
+  it('has a version number') { expect(UnitedStates::VERSION).not_to be_nil }
+  it('loads UnitedStates::Array') { expect(UnitedStates::Array).not_to be_nil }
+
+  it 'loads UnitedStates::State::Designation' do
+    expect(UnitedStates::State::Designation).not_to be_nil
   end
 
   it 'loads UnitedStates::State::Name' do
@@ -287,7 +290,7 @@ RSpec.describe UnitedStates do
   end
   # rubocop: enable RSpec/ExampleLength
 
-  describe '.array_from_hashes(hashes)' do
+  describe '.array_from_hashes(*hashes)' do
     context 'when hashes is empty' do
       subject(:array_from_hashes) { described_class.array_from_hashes }
 
@@ -301,8 +304,8 @@ RSpec.describe UnitedStates do
 
       it('is an Array') { is_expected.to be_an(Array) }
 
-      it 'includes a UnitedStates::State::Designation from the hash' do
-        is_expected.to include(
+      it 'contains a UnitedStates::State::Designation from the hash' do
+        is_expected.to contain_exactly(
           UnitedStates::State::Designation.new(
             name: 'LOUISIANA', postal_code: 'LA'))
       end
@@ -318,7 +321,7 @@ RSpec.describe UnitedStates do
 
       it('is an Array') { is_expected.to be_an(Array) }
 
-      it 'includes a UnitedStates::State::Designation for each' do
+      it 'contains a UnitedStates::State::Designation for each hash' do
         is_expected.to contain_exactly(
           UnitedStates::State::Designation.new(
             name: 'florida', postal_code: 'fl'),

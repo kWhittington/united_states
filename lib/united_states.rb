@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'united_states/version'
+require 'united_states/array'
 require 'united_states/state/designation'
 
 # Top-level namespace for this gem.
@@ -15,6 +16,8 @@ module UnitedStates
   end
 
   # @example
+  #  require 'united_states'
+  #
   #  UnitedStates['louisiana'] # => UnitedSt...Designation
   #  UnitedStates[:Ms] # => UnitedSt...Designation
   #  UnitedStates[:marx] # => NoDesignationFoundError
@@ -37,6 +40,8 @@ module UnitedStates
   end
 
   # @example
+  #  require 'united_states'
+  #
   #  UnitedStates.array_from_hashes(
   #    { name: 'Florida', postal_code: 'FL' },
   #    { name: 'Iowa', postal_code: 'IA'})
@@ -45,9 +50,7 @@ module UnitedStates
   # @return [Array<UnitedStates::State::Designation>]
   #  a collection of state designations made from the given hash attributes
   def self.array_from_hashes(*hashes)
-    hashes.map do |hash|
-      UnitedStates::State::Designation.from_hash(hash)
-    end
+    UnitedStates::Array.from_hashes(*hashes)
   end
 
   # @example
@@ -65,11 +68,7 @@ module UnitedStates
   # @raise UnitedStates::State::PostalCode::StringTooShortError
   #  if a designation has no postal code defined or is too short
   def self.array_from_yaml(yaml)
-    return [] unless YAML.safe_load(yaml)
-    YAML.safe_load(yaml).map do |key, value|
-      UnitedStates::State::Designation.new(
-        name: key, postal_code: value && value.fetch('postal_code', ''))
-    end
+    UnitedStates::Array.from_yaml(yaml)
   end
 
   # @example
@@ -86,10 +85,7 @@ module UnitedStates
   # @raise UnitedStates::State::PostalCode::StringTooShortError
   #  if a designation has no postal code defined or is too short
   def self.array_from_yaml_file(path:)
-    pathname = Pathname.new(path)
-    return array_from_yaml(pathname.read) if pathname.exist?
-    raise "\"#{path}\" does not exist.\n"\
-          'Please supply a path to a YAML file.'
+    UnitedStates::Array.from_yaml_file(path: path)
   end
 
   # @return [String]
@@ -99,6 +95,8 @@ module UnitedStates
   end
 
   # @example
+  #  require 'united_states'
+  #
   #  UnitedStates.find_by_name('louisiana') # => UnitedSt...Designation
   #  UnitedStates.find_by_name('marx') # => NoDesignationFoundError
   # @param name [String]
@@ -113,6 +111,8 @@ module UnitedStates
   end
 
   # @example
+  #  require 'united_states'
+  #
   #  UnitedStates.find_by_postal_code('la') # => UnitedSt...Designation
   #  UnitedStates.find_by_postal_code('xx') # => NoDesignationFoundError
   # @param postal_code [String]
