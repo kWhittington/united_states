@@ -10,6 +10,7 @@ __Change Groups__:
 
 ## [Unreleased]
 ### Added
+- `UnitedStates::State::GovernmentPrintingOfficeAbbreviation`
 - `require` statements to all `@example`.
 - `UnitedStates::Array` to hold all `Array<UnitedStates::Designation>`
   factory methods.
