@@ -13,6 +13,12 @@ Documentation:
   Exclude:
     - spec/**/*_spec.rb
 
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: same_line
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Metrics/BlockLength:
   Exclude:
     - .rubocop.yml
@@ -25,9 +31,3 @@ Metrics/ClassLength:
 RSpec/DescribeClass:
   Exclude:
     - spec/support/**/*
-
-Style/MultilineMethodCallBraceLayout:
-  EnforcedStyle: same_line
-
-Style/MultilineMethodCallIndentation:
-  EnforcedStyle: indented

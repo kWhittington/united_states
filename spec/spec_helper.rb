@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+
 require 'bundler/setup'
+require 'pathname'
 require 'pry'
 
 # Ensure ./tmp/ exists.

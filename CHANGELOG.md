@@ -10,6 +10,18 @@ __Change Groups__:
 
 ## [Unreleased]
 
+## [1.2.1] - 2017-07-04
+### Changed
+- Added empty lines after magic comments (per `rubocop`).
+- Added empty lines after inline `RSpec` `subject` (per `rubocop`).
+- Namespace of `MultilineMethodCallBraceLayout` and
+  `MultilineMethodCallIndentation` (per `rubocop`).
+- Disabled `Style/IndentHeredoc` in `spec/united_states_spec.rb`.
+
+### Fixed
+- `UnitedStates.names` would throw `NameError: uninitialized constant
+   UnitedStates::Pathname` due to missing `require` statements.
+
 ## [1.2.0] - 2017-02-26
 ### Added
 - `UnitedStates.config_path`

@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+require 'pathname'
 require 'spec_helper'
 require 'united_states'
 
@@ -297,6 +299,7 @@ RSpec.describe UnitedStates do
 
     context 'when hashes has one hash in it' do
       subject(:array_from_hashes) { described_class.array_from_hashes(hash) }
+
       let(:hash) { { name: 'louisiana', postal_code: 'la' } }
 
       it('is an Array') { is_expected.to be_an(Array) }
@@ -328,6 +331,7 @@ RSpec.describe UnitedStates do
     end
   end
 
+  # rubocop: disable Style/IndentHeredoc
   describe '.array_from_yaml(yaml)' do
     subject(:array_from_yaml) { described_class.array_from_yaml(yaml) }
 
@@ -537,6 +541,7 @@ Wisconsin:
       end
     end
   end
+  # rubocop: enable Style/IndentHeredoc
 
   describe '.config_path' do
     subject(:config_path) { described_class.config_path }
