@@ -1,10 +1,12 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 require 'faker'
 require 'united_states/state/name'
 
 RSpec.describe UnitedStates::State::Name do
   subject(:name) { described_class.new(string) }
+
   let(:string) { Faker::Lorem.word }
 
   describe '#==(other)' do

@@ -1,9 +1,11 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 require 'united_states/state/postal_code'
 
 RSpec.describe UnitedStates::State::PostalCode do
   subject(:postal_code) { described_class.new(string) }
+
   let(:string) { Faker::Lorem.characters(2) }
 
   describe '.new(string)' do

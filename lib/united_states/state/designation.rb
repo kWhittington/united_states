@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'united_states/state/postal_code'
 require 'united_states/state/name'
 

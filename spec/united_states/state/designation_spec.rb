@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 require 'faker'
 require 'united_states/state/designation'
@@ -22,6 +23,7 @@ RSpec.describe UnitedStates::State::Designation do
 
     context 'when hash is a variable' do
       subject(:from_hash) { described_class.from_hash(hash) }
+
       let(:hash) { { name: 'GEORGIA', postal_code: 'GA' } }
 
       it 'is a UnitedStates::State::Designation from the hash' do

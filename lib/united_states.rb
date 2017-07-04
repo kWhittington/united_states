@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'pathname'
 require 'united_states/version'
 require 'united_states/state/designation'
