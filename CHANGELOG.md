@@ -10,6 +10,14 @@ __Change Groups__:
 
 ## [Unreleased]
 
+## [1.2.2] - 2017-07-04
+### Fixed
+- `UnitedStates.names` would throw `RuntimeError:
+  "./lib/united_states/designations.yml" does not exist.
+  Please supply a path to a YAML file.` due to assumed working directory.
+- `UnitedStates.names` would throw `NameError: uninitialized constant
+  UnitedStates::YAML` due to missing `require` statements.
+
 ## [1.2.1] - 2017-07-04
 ### Changed
 - Added empty lines after magic comments (per `rubocop`).
