@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pathname'
 require 'spec_helper'
 require 'united_states'
 

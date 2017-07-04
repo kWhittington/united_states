@@ -10,6 +10,11 @@ __Change Groups__:
 
 ## [Unreleased]
 
+## [1.2.1] - 2017-07-04
+### Fixed
+- `UnitedStates.names` would throw `NameError: uninitialized constant
+   UnitedStates::Pathname` due to missing `require` statements.
+
 ## [1.2.0] - 2017-02-26
 ### Added
 - `UnitedStates.config_path`
