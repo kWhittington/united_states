@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'pathname'
+require 'yaml'
 require 'united_states/version'
 require 'united_states/state/designation'
 
@@ -97,7 +98,7 @@ module UnitedStates
   # @return [String]
   #  the path to the Designations yaml file
   def self.config_path
-    './lib/united_states/designations.yml'
+    Pathname.new(__FILE__).parent.join('united_states/designations.yml')
   end
 
   # @example

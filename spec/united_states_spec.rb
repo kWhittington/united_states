@@ -546,8 +546,10 @@ Wisconsin:
   describe '.config_path' do
     subject(:config_path) { described_class.config_path }
 
-    it 'is "./lib/united_states/designations.yml"' do
-      is_expected.to eq('./lib/united_states/designations.yml')
+    it 'is "/.../lib/united_states/designations.yml"' do
+      is_expected.to eq(
+        Pathname.new(__FILE__).parent.parent.join(
+          'lib/united_states/designations.yml'))
     end
   end
 
