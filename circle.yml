@@ -1,6 +1,0 @@
-dependencies:
-  override:
-    - rvm 2.1.10,2.2.10,2.3.8,2.4.4,2.5.3 --verbose do ./bin/circle_ci/setup
-test:
-  override:
-    - rvm 2.1.10,2.2.10,2.3.8,2.4.4,2.5.3 --verbose do ./bin/circle_ci/test

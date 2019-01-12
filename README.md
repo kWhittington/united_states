@@ -26,6 +26,7 @@ Or install it yourself as:
   * MRI 2.3.8
   * MRI 2.4.4
   * MRI 2.5.3
+  * MRI 2.6.0
 
 ## Usage
 

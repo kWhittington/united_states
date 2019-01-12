@@ -142,4 +142,3 @@ module UnitedStates
     all.map(&:postal_code)
   end
 end
-# rubocop: enable Metrics/ModuleLength

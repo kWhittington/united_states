@@ -332,6 +332,7 @@ RSpec.describe UnitedStates do
   end
 
   # rubocop: disable Style/IndentHeredoc
+  # rubocop: disable Layout/ClosingHeredocIndentation
   describe '.array_from_yaml(yaml)' do
     subject(:array_from_yaml) { described_class.array_from_yaml(yaml) }
 
@@ -427,11 +428,13 @@ Wisconsin:
         Pathname.new(path).delete if Pathname.new(path).exist?
       end
 
+      # rubocop: disable Lint/InterpolationCheck
       it 'raises "#{path} does not exist."' do
         expect { array_from_yaml_file }.to raise_error(
           "\"./tmp/does_not_exist.yml\" does not exist.\n"\
           'Please supply a path to a YAML file.')
       end
+      # rubocop: enable Lint/InterpolationCheck
     end
 
     context 'when the file is empty' do
@@ -542,6 +545,7 @@ Wisconsin:
     end
   end
   # rubocop: enable Style/IndentHeredoc
+  # rubocop: enable Layout/ClosingHeredocIndentation
 
   describe '.config_path' do
     subject(:config_path) { described_class.config_path }

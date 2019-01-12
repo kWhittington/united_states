@@ -1,0 +1,70 @@
+version: 2.1
+
+commands:
+  build_and_test:
+    description: "Builds and tests united_states gem in the CircleCI env"
+    steps:
+      - checkout:
+          path: ~/united_states
+      - run:
+          name: Setup
+          command: ./bin/circle_ci/setup
+      - run:
+          name: Test
+          command: ./bin/circle_ci/test
+      - store_test_results:
+          path: ~/united_states/tmp/test_results
+
+jobs:
+  ruby-2_1:
+    docker:
+      - image: circleci/ruby:2.1.10-node
+    working_directory: ~/united_states
+    steps:
+      - build_and_test
+
+  ruby-2_2:
+    docker:
+      - image: circleci/ruby:2.2.10-node
+    working_directory: ~/united_states
+    steps:
+      - build_and_test
+
+  ruby-2_3:
+    docker:
+      - image: circleci/ruby:2.3.8-node
+    working_directory: ~/united_states
+    steps:
+      - build_and_test
+
+  ruby-2_4:
+    docker:
+      - image: circleci/ruby:2.4.4-node
+    working_directory: ~/united_states
+    steps:
+      - build_and_test
+
+  ruby-2_5:
+    docker:
+      - image: circleci/ruby:2.5.3-node
+    working_directory: ~/united_states
+    steps:
+      - build_and_test
+
+  ruby-2_6:
+    docker:
+      - image: circleci/ruby:2.6.0-node
+    working_directory: ~/united_states
+    steps:
+      - build_and_test
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - ruby-2_1
+      - ruby-2_2
+      - ruby-2_3
+      - ruby-2_4
+      - ruby-2_5
+      - ruby-2_6

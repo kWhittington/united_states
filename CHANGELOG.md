@@ -13,6 +13,7 @@ __Change Groups__:
 ## [1.2.3] - 2019-01-12
 ### Added
 - `Ruby` `v2.5.3` testing.
+- `Ruby` `v2.6.0` testing.
 ### Changed
 - `Ruby` `v2.4.0` -> `v2.4.4` testing.
 - `Ruby` `v2.3.3` -> `v2.3.8` testing.
