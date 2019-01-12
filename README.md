@@ -22,9 +22,10 @@ Or install it yourself as:
 
 `united_states` is tested against the following [stable `ruby` versions](https://www.ruby-lang.org/en/downloads/):
   * MRI 2.1.10
-  * MRI 2.2.6
-  * MRI 2.3.3
-  * MRI 2.4.0
+  * MRI 2.2.10
+  * MRI 2.3.8
+  * MRI 2.4.4
+  * MRI 2.5.3
 
 ## Usage
 

@@ -10,6 +10,14 @@ __Change Groups__:
 
 ## [Unreleased]
 
+## [1.2.3] - 2019-01-12
+### Added
+- `Ruby` `v2.5.3` testing.
+### Changed
+- `Ruby` `v2.4.0` -> `v2.4.4` testing.
+- `Ruby` `v2.3.3` -> `v2.3.8` testing.
+- `Ruby` `v2.2.6` -> `v2.2.10` testing.
+
 ## [1.2.2] - 2017-07-04
 ### Fixed
 - `UnitedStates.names` would throw `RuntimeError:
