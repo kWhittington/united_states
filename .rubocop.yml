@@ -7,7 +7,6 @@ AllCops:
   Exclude:
     - rubygems*/
     - united_states.gemspec
-  TargetRubyVersion: 2.1
 
 Documentation:
   Exclude:
